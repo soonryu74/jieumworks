@@ -83,30 +83,70 @@
   .town h2{ font-family:var(--serif); font-size:1.7rem; font-weight:700; margin:0 0 8px; }
   .town .lead{ color:var(--muted); font-size:.9rem; margin:0 0 40px; }
 
-  .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(148px,1fr)); gap:24px 18px; }
+  .town{ position:relative; }
+  .sky{ position:absolute; left:0; right:0; top:-30px; height:460px; pointer-events:none;
+        overflow:hidden; z-index:0; }
+  .sky i{ position:absolute; width:2px; height:2px; border-radius:50%; background:#dfe8f6;
+          animation:twinkle 4s ease-in-out infinite; }
+  @keyframes twinkle{ 0%,100%{opacity:.15} 50%{opacity:.85} }
+  .moon{ position:absolute; right:6%; top:26px; width:62px; height:62px; border-radius:50%;
+         background:radial-gradient(circle at 36% 34%, #fdf3dc, #e9d3a4 58%, #cdb68a 100%);
+         box-shadow:0 0 44px rgba(240,222,182,.3), 0 0 110px rgba(233,189,118,.16); opacity:.82; }
+  .moon:after{ content:''; position:absolute; right:-9px; top:-7px; width:58px; height:58px;
+         border-radius:50%; background:var(--night); }
+  .town .wrap{ position:relative; z-index:1; }
+
+  .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(152px,1fr));
+         gap:30px 16px; align-items:end; }
   .house{ background:none; border:0; padding:0 0 4px; cursor:pointer; font-family:inherit;
           display:block; width:100%; position:relative; }
-  .house svg{ display:block; width:100%; height:auto; overflow:visible; }
-  .rf{ fill:#243247; stroke:rgba(255,255,255,.1); stroke-width:1.1; transition:.3s; }
-  .bd{ fill:var(--wall); stroke:var(--edge); stroke-width:1.1; transition:.3s; }
-  .wn{ fill:var(--glow); opacity:.14; transition:.3s; }
-  .ty{ fill:var(--muted); font-size:11px; font-family:var(--sans); font-weight:700;
-       letter-spacing:.12em; transition:.3s; }
-  .tm{ fill:var(--body); font-size:30px; font-family:var(--serif); font-weight:700; transition:.3s; }
-  .house:hover .bd,.house:focus-visible .bd{ fill:var(--wall-2); stroke:rgba(233,189,118,.5); }
-  .house:hover .rf,.house:focus-visible .rf{ fill:#2b3a53; stroke:rgba(233,189,118,.35); }
-  .house:hover .wn,.house:focus-visible .wn{ opacity:.9; }
+  .house svg{ display:block; width:100%; height:auto; overflow:visible; transition:.35s;
+          filter:drop-shadow(0 0 9px rgba(233,189,118,.12)); }
+  .rf{ fill:#26334a; stroke:rgba(255,255,255,.09); stroke-width:1.1; transition:.35s; }
+  .bd{ fill:#1c2637; stroke:#3a4761; stroke-width:1.1; transition:.35s; }
+  .ch{ fill:#222e42; stroke:rgba(255,255,255,.1); stroke-width:1; transition:.35s; }
+  .wn{ fill:var(--glow); opacity:.38; transition:.35s; }
+  .gr{ stroke:rgba(255,255,255,.13); stroke-width:1; }
+  .pool{ fill:var(--glow); opacity:.09; transition:.35s; }
+  .ty{ fill:#7b879b; font-size:11px; font-family:var(--sans); font-weight:700;
+       letter-spacing:.14em; transition:.35s; }
+  .tm{ fill:#b3bfd2; font-size:27px; font-family:var(--serif); font-weight:700; transition:.35s; }
+
+  /* 이야기가 있는 집 — 불이 환하게 */
+  .house.lit svg{ filter:drop-shadow(0 0 16px rgba(233,189,118,.34)); }
+  .house.lit .bd{ fill:#312512; stroke:rgba(233,189,118,.46); }
+  .house.lit .rf{ fill:#2d2718; stroke:rgba(233,189,118,.34); }
+  .house.lit .ch{ fill:#2a2418; stroke:rgba(233,189,118,.24); }
+  .house.lit .wn{ opacity:.95; }
+  .house.lit .pool{ opacity:.26; }
+  .house.lit .ty{ fill:rgba(233,189,118,.72); }
+  .house.lit .tm{ fill:var(--glow); }
+  .smoke{ opacity:0; }
+  .house.lit .smoke{ opacity:1; }
+  .smoke circle{ fill:#d9c8ab; opacity:0; animation:puff 5.4s linear infinite; }
+  .smoke circle:nth-child(2){ animation-delay:1.8s; }
+  .smoke circle:nth-child(3){ animation-delay:3.6s; }
+  @keyframes puff{
+    0%{ opacity:0; transform:translate(0,0) scale(.5); }
+    18%{ opacity:.3; }
+    100%{ opacity:0; transform:translate(-7px,-30px) scale(2.1); } }
+
+  .house:hover svg,.house:focus-visible svg{ transform:translateY(-5px);
+      filter:drop-shadow(0 0 22px rgba(233,189,118,.5)); }
+  .house:hover .bd,.house:focus-visible .bd{ fill:#332612; stroke:rgba(233,189,118,.72); }
+  .house:hover .rf,.house:focus-visible .rf{ fill:#382e1a; stroke:rgba(233,189,118,.55); }
+  .house:hover .wn,.house:focus-visible .wn{ opacity:1; }
+  .house:hover .pool,.house:focus-visible .pool{ opacity:.34; }
   .house:hover .tm,.house:focus-visible .tm{ fill:var(--glow); }
-  .house:hover .ty,.house:focus-visible .ty{ fill:var(--glow); opacity:.7; }
+  .house:hover .ty,.house:focus-visible .ty{ fill:rgba(233,189,118,.8); }
   .house:focus{ outline:none; }
   .house:focus-visible{ outline:2px solid var(--sig); outline-offset:6px; border-radius:6px; }
-  .house .nm{ display:block; margin-top:9px; font-size:.78rem; color:var(--muted);
+  .house .nm{ display:block; margin-top:10px; font-size:.79rem; color:var(--muted);
       line-height:1.45; opacity:0; transform:translateY(-4px); transition:.3s; min-height:2.9em; }
   .house:hover .nm,.house:focus-visible .nm{ opacity:1; transform:none; color:var(--body); }
-  .house.lit .wn{ opacity:.72; }
-  .house.lit .bd{ stroke:rgba(233,189,118,.24); }
-  .house.lit .tm{ fill:#c8d2e2; }
   @media (hover:none){ .house .nm{ opacity:1; transform:none; } }
+  @media (prefers-reduced-motion:reduce){
+    .sky i,.smoke circle{ animation:none; } .smoke circle{ opacity:.18; } }
 
   /* ─── 집 안 ─── */
   .veil{ position:fixed; inset:0; background:rgba(5,8,14,.86); backdrop-filter:blur(7px);
@@ -161,7 +201,9 @@
     .abio .who{ font-size:1.3rem; }
     .town{ padding:52px 0 20px; }
     .town h2{ font-size:1.36rem; }
-    .grid{ grid-template-columns:repeat(auto-fill,minmax(118px,1fr)); gap:20px 14px; }
+    .grid{ grid-template-columns:repeat(auto-fill,minmax(124px,1fr)); gap:24px 12px; }
+    .sky{ height:330px; } .moon{ width:46px; height:46px; right:7%; top:18px; }
+    .moon:after{ width:43px; height:43px; right:-7px; top:-5px; }
     .house .nm{ font-size:.72rem; }
     .veil{ padding:0; }
     .room{ margin:0; border-radius:0; border:0; min-height:100vh; }
@@ -207,6 +249,7 @@
 </section>
 
 <section class="town">
+  <div class="sky" id="sky" aria-hidden="true"><div class="moon"></div></div>
   <div class="wrap">
     <h2>지어 놓은 집들</h2>
     <p class="lead">문패에는 지은 때만 적혀 있습니다. 눌러서 안으로 들어가 보세요.</p>
@@ -267,20 +310,48 @@
     document.getElementById('grid').innerHTML=items.map(house).join('');
     document.getElementById('grid').addEventListener('click',function(e){
       var b=e.target.closest('.house'); if(b) open(+b.dataset.i); });
+    sky();
     setupBgm(d.bgm||{});
   }
 
   function house(x,i){
-    var y=x.ym.slice(0,4), m=x.ym.slice(5,7);
-    return '<button class="house'+(x.story?' lit':'')+'" type="button" data-i="'+i+'" aria-label="'+esc(x.title)+'">'+
-      '<svg viewBox="0 0 120 132" aria-hidden="true">'+
-        '<path class="rf" d="M60 6 L116 52 L4 52 Z"/>'+
-        '<rect class="bd" x="14" y="52" width="92" height="74" rx="3"/>'+
-        '<rect class="wn" x="49" y="24" width="22" height="16" rx="2"/>'+
-        '<text class="ty" x="60" y="76" text-anchor="middle">'+esc(y)+'</text>'+
-        '<text class="tm" x="60" y="111" text-anchor="middle">'+esc(m)+'</text>'+
+    var y=x.ym.slice(0,4), m=+x.ym.slice(5,7), lit=!!(x.story&&x.story.length);
+    // 집마다 조금씩 다른 모양 (목록 자리로 정해지므로 언제 봐도 같습니다)
+    var h=[40,48,56][i%3], bw=[92,86,90,84][i%4], cx=(i%2)?30:84,
+        wins=lit?2:[1,2,1][i%3], ap=138-74-h, bx=(120-bw)/2;
+    var chimTop=ap+9, chim = (lit||i%3===0)
+      ? '<rect class="ch" x="'+cx+'" y="'+chimTop+'" width="9" height="'+(138-74-chimTop)+'" rx="1.5"/>' : '';
+    var smoke = lit
+      ? '<g class="smoke" transform="translate('+(cx+4.5)+','+(chimTop-3)+')">'+
+        '<circle r="3"/><circle r="3.6"/><circle r="3"/></g>' : '';
+    var w='';
+    if(wins===1){ w='<rect class="wn" x="52" y="'+(ap+h*0.52)+'" width="16" height="12" rx="2"/>'; }
+    else { w='<rect class="wn" x="44" y="'+(ap+h*0.58)+'" width="13" height="11" rx="2"/>'+
+             '<rect class="wn" x="63" y="'+(ap+h*0.58)+'" width="13" height="11" rx="2"/>'; }
+    return '<button class="house'+(lit?' lit':'')+'" type="button" data-i="'+i+'" aria-label="'+esc(x.title)+'">'+
+      '<svg viewBox="0 0 120 150" aria-hidden="true">'+
+        '<ellipse class="pool" cx="60" cy="139" rx="50" ry="8"/>'+
+        '<line class="gr" x1="9" y1="138.5" x2="111" y2="138.5"/>'+
+        smoke + chim +
+        '<path class="rf" d="M60 '+ap+' L117 64 L3 64 Z"/>'+
+        '<rect class="bd" x="'+bx+'" y="64" width="'+bw+'" height="74" rx="3"/>'+
+        w +
+        '<text class="ty" x="60" y="92" text-anchor="middle">'+esc(y)+'</text>'+
+        '<text class="tm" x="60" y="124" text-anchor="middle">'+m+'월</text>'+
       '</svg>'+
       '<span class="nm">'+esc(x.title)+'</span></button>';
+  }
+
+  function sky(){
+    var el=document.getElementById('sky'); if(!el) return;
+    var seed=20260819, rnd=function(){ seed=(seed*1103515245+12345)&0x7fffffff; return seed/0x7fffffff; };
+    var h='';
+    for(var k=0;k<54;k++){
+      var sz=(rnd()<.18?2.6:1.6);
+      h+='<i style="left:'+(rnd()*100).toFixed(2)+'%;top:'+(rnd()*88).toFixed(2)+'%;'+
+         'width:'+sz+'px;height:'+sz+'px;animation-delay:'+(rnd()*4).toFixed(2)+'s"></i>';
+    }
+    el.insertAdjacentHTML('beforeend',h);
   }
 
   var veil=document.getElementById('veil'), lastFocus=null;
