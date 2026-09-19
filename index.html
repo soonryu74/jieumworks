@@ -228,6 +228,35 @@
   .house:hover .pool,.house:focus-visible .pool{ opacity:.4; }
   .house:hover .tm,.house:focus-visible .tm{ fill:#fff0c6; }
   .house:hover .ty,.house:focus-visible .ty{ fill:rgba(255,240,198,.82); }
+  /* 건드리면 난쟁이가 나와 번호를 밝힙니다 */
+  .g-boot{ fill:#6b4429; } .g-skin{ fill:#f6d3b4; } .g-beard{ fill:#f6f1e6; }
+  .g-coat{ fill:#5b7fb4; } .g-hat{ fill:#d2544f; }
+  .w-stick{ fill:none; stroke:#a9784a; stroke-width:1.8; stroke-linecap:round; }
+  .w-star{ fill:#ffe6ab; }
+  .bno-bg{ fill:rgba(26,18,10,.62); stroke:rgba(255,230,171,.6); stroke-width:1.2; }
+  .bno-t{ fill:#ffe6ab; font-size:12px; font-weight:700; letter-spacing:.1em;
+          font-family:var(--sans); }
+
+  .gnome{ opacity:0; transform:translateY(9px); transition:opacity .28s, transform .28s; }
+  .bno{ opacity:0; transform:scale(.6); transform-origin:60px 12px;
+        transition:opacity .3s .42s, transform .3s .42s; }
+  @media (hover:hover){
+    .house:hover .gnome,.house:focus-visible .gnome{ opacity:1; transform:none; }
+    .house:hover .bno,.house:focus-visible .bno{ opacity:1; transform:none; }
+    .house:hover .wand,.house:focus-visible .wand{ animation:tap .46s ease-in-out .2s 2; }
+    .house:hover .w-star,.house:focus-visible .w-star{ animation:spark .46s ease-in-out .2s 2; }
+  }
+  @media (hover:none){
+    .gnome{ opacity:1; transform:none; }
+    .bno{ opacity:.85; transform:none; transition:none; }
+  }
+  .wand{ transform-origin:0 0; }
+  @keyframes tap{ 0%,100%{transform:rotate(0)} 46%{transform:rotate(-38deg)} }
+  @keyframes spark{ 0%,100%{opacity:1} 40%{opacity:.35} 62%{opacity:1} }
+  @media (prefers-reduced-motion:reduce){
+    .gnome,.bno{ opacity:1; transform:none; transition:none; }
+    .wand,.w-star{ animation:none !important; } }
+
   .house:focus{ outline:none; }
   .house:focus-visible{ outline:2px solid var(--sig); outline-offset:3px; border-radius:6px; }
   .house .nm{ display:block; margin:9px 5px 1px; font-size:.79rem; color:#fdf6ee;
@@ -481,6 +510,9 @@
       im.alt=(A.name||'지음웍스')+' 사진'; im.src=A.photo;
     } else { pt.innerHTML='<div class="none"><b>☖</b>사진이 들어올 자리</div>'; }
 
+    // 지은 순서 번호. 목록은 최신이 위이므로 아래쪽이 001입니다.
+    var tot=items.length;
+    items.forEach(function(it,ix){ it.no=String(tot-ix).padStart(3,'0'); });
     D.items=items;
     document.getElementById('grid').innerHTML=items.map(house).join('');
     document.getElementById('grid').addEventListener('click',function(e){
@@ -604,6 +636,28 @@
       '<path class="ln" d="M25 90 V108 M51 90 V108 M77 90 V108 M103 90 V108"/>'); }
   };
 
+  // 요술봉을 든 작은 난쟁이 — 건드리면 나옵니다
+  var GNOME =
+    '<g transform="translate(13,156)"><g class="gnome">'+
+      '<ellipse class="g-boot" cx="-3" cy="0" rx="4" ry="2.4"/>'+
+      '<ellipse class="g-boot" cx="4" cy="0" rx="4" ry="2.4"/>'+
+      '<path class="g-coat" d="M-5 -13 h11 l2.5 13 h-16 Z"/>'+
+      '<circle class="g-skin" cx="0.5" cy="-17" r="5"/>'+
+      '<path class="g-beard" d="M-4 -16 q4.5 9 9 0 q-4.5 4 -9 0 Z"/>'+
+      '<path class="g-hat" d="M-5.5 -18 q6 -12 12.5 0 Z"/>'+
+      '<circle class="g-hat" cx="0.7" cy="-23" r="1.7"/>'+
+      '<g transform="translate(7,-13)"><g class="wand">'+
+        '<path class="w-stick" d="M0 0 L9 -9"/>'+
+        '<path class="w-star" d="M10.2 -10.6 l1.2 2.6 2.8 .3 -2.1 1.9 .6 2.8'+
+          ' -2.5 -1.4 -2.5 1.4 .6 -2.8 -2.1 -1.9 2.8 -.3 Z"/>'+
+      '</g></g>'+
+    '</g></g>';
+
+  function bno(n){
+    return '<g class="bno"><rect class="bno-bg" x="38" y="2" width="44" height="20" rx="10"/>'+
+      '<text class="bno-t" x="60" y="16" text-anchor="middle">'+esc(n)+'</text></g>';
+  }
+
   function house(x,i){
     var y=x.ym.slice(0,4), m=+x.ym.slice(5,7), lit=!!(x.story&&x.story.length);
     var k=BLD[x.kind]?x.kind:'home';
@@ -630,7 +684,7 @@
         '<ellipse class="pool" cx="60" cy="157" rx="52" ry="7"/>'+
         dec +
         (lit?Smoke(k==='care'?89:(k==='works'?101:85), k==='care'?62:(k==='works'?52:64)):'')+
-        BLD[k]() +
+        BLD[k]() + GNOME + bno(x.no) +
       '</svg>'+
       '<span class="nm">'+esc(x.title)+'</span>'+
       '<span class="wh">'+esc(y)+' · '+m+'월</span></button>';
@@ -662,7 +716,7 @@
       '<div class="room">'+
         '<div class="top">'+
           '<button class="shut" type="button" aria-label="닫기">✕</button>'+
-          '<div class="when">'+esc(y)+'년 '+m+'월에 지음</div>'+
+          '<div class="when">'+esc(x.no)+' · '+esc(y)+'년 '+m+'월에 지음</div>'+
           '<h3 id="rt">'+esc(x.title)+(x.star?'<span class="star">대표작</span>':'')+'</h3>'+
           '<div class="addr">'+esc(x.url||'')+'</div>'+
         '</div>'+ pic + tale +
