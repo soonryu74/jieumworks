@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 230" width="180" height="230"
+     role="img" aria-label="집을 지어 주는 요정">
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#3a3160"/><stop offset="34%" stop-color="#5e4779"/>
+    <stop offset="62%" stop-color="#a06a83"/><stop offset="84%" stop-color="#dd8f6e"/>
+    <stop offset="100%" stop-color="#f3bc80"/>
+  </linearGradient>
+  <radialGradient id="halo" cx="50%" cy="46%" r="52%">
+    <stop offset="0%" stop-color="#ffe6ab" stop-opacity=".42"/>
+    <stop offset="100%" stop-color="#ffe6ab" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="wing" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#cfe9e2" stop-opacity=".78"/>
+    <stop offset="100%" stop-color="#9fd3c8" stop-opacity=".30"/>
+  </linearGradient>
+</defs>
+
+<rect width="180" height="230" fill="url(#sky)"/>
+<ellipse cx="90" cy="104" rx="86" ry="82" fill="url(#halo)"/>
+
+<!-- 별 -->
+<g fill="#fff6e2">
+  <circle cx="26" cy="26" r="1.6"/><circle cx="52" cy="14" r="1.1"/>
+  <circle cx="148" cy="22" r="1.7"/><circle cx="126" cy="44" r="1"/>
+  <circle cx="18" cy="58" r="1.2"/><circle cx="162" cy="62" r="1.3"/>
+  <circle cx="72" cy="30" r="1"/><circle cx="106" cy="16" r="1.2"/>
+</g>
+
+<!-- 언덕 -->
+<path d="M0 196 Q46 186 90 192 Q136 198 180 188 L180 230 L0 230 Z" fill="#6b5068"/>
+<path d="M0 196 Q46 186 90 192 Q136 198 180 188" fill="none" stroke="#8e6f95" stroke-width="2"/>
+<g fill="none" stroke="#8e6f95" stroke-width="2" stroke-linecap="round">
+  <path d="M14 193 v-7 M30 195 v-5 M148 190 v-7 M164 189 v-6"/>
+</g>
+
+<!-- 날개 -->
+<g opacity=".9">
+  <path d="M74 118 C46 100 40 74 58 68 C74 63 80 88 76 112 Z" fill="url(#wing)"
+        stroke="#bfe2d9" stroke-width="1.2"/>
+  <path d="M106 118 C134 100 140 74 122 68 C106 63 100 88 104 112 Z" fill="url(#wing)"
+        stroke="#bfe2d9" stroke-width="1.2"/>
+</g>
+
+<!-- 몸 -->
+<ellipse cx="80" cy="194" rx="9" ry="4.5" fill="#6b4429"/>
+<ellipse cx="100" cy="194" rx="9" ry="4.5" fill="#6b4429"/>
+<path d="M68 122 h44 l7 70 h-58 Z" fill="#4f8f86" stroke="#3a6d66" stroke-width="1.6"
+      stroke-linejoin="round"/>
+<!-- 앞치마 -->
+<path d="M75 138 h30 l4 42 h-38 Z" fill="#e7cfa6" stroke="#b79c72" stroke-width="1.4"
+      stroke-linejoin="round"/>
+<path d="M75 138 l6 -12 h18 l6 12" fill="none" stroke="#b79c72" stroke-width="1.4"/>
+<circle cx="90" cy="162" r="4.5" fill="#c9a97a"/>
+
+<!-- 얼굴 -->
+<circle cx="90" cy="108" r="17" fill="#f6d3b4"/>
+<path d="M78 100 q3 -3 7 0 M95 100 q3 -3 7 0" fill="none" stroke="#8a6a4c"
+      stroke-width="1.8" stroke-linecap="round"/>
+<circle cx="81" cy="108" r="2.1" fill="#4a3a2c"/><circle cx="99" cy="108" r="2.1" fill="#4a3a2c"/>
+<path d="M84 116 q6 5 12 0" fill="none" stroke="#8a6a4c" stroke-width="1.8" stroke-linecap="round"/>
+<circle cx="74" cy="114" r="3.4" fill="#eaa392" opacity=".55"/>
+<circle cx="106" cy="114" r="3.4" fill="#eaa392" opacity=".55"/>
+<!-- 뾰족 귀 -->
+<path d="M73 104 l-7 -7 l2 12 Z" fill="#f6d3b4"/>
+<path d="M107 104 l7 -7 l-2 12 Z" fill="#f6d3b4"/>
+
+<!-- 모자 -->
+<path d="M70 98 q20 -40 40 0 Z" fill="#d2544f" stroke="#a63f3c" stroke-width="1.6"
+      stroke-linejoin="round"/>
+<circle cx="90" cy="68" r="4" fill="#ffe6ab"/>
+
+<!-- 왼손: 작은 집을 받쳐 듦 -->
+<g transform="translate(36,140)">
+  <rect x="0" y="16" width="34" height="24" rx="3" fill="#f0d3a8" stroke="#8a6a4c" stroke-width="1.6"/>
+  <path d="M-5 16 L17 0 L39 16 Z" fill="#c4635a" stroke="#8a4a44" stroke-width="1.6"
+        stroke-linejoin="round"/>
+  <rect x="6" y="23" width="9" height="9" rx="1.6" fill="#ffe6ab" stroke="#8a6a4c" stroke-width="1"/>
+  <rect x="20" y="23" width="9" height="9" rx="1.6" fill="#ffe6ab" stroke="#8a6a4c" stroke-width="1"/>
+  <ellipse cx="17" cy="44" rx="13" ry="5" fill="#f6d3b4"/>
+</g>
+<path d="M68 132 q-12 14 -14 22" fill="none" stroke="#4f8f86" stroke-width="8"
+      stroke-linecap="round"/>
+
+<!-- 오른손: 요술봉 -->
+<path d="M112 132 q14 6 20 -8" fill="none" stroke="#4f8f86" stroke-width="8" stroke-linecap="round"/>
+<circle cx="133" cy="123" r="5.5" fill="#f6d3b4"/>
+<path d="M134 120 L146 96" fill="none" stroke="#a9784a" stroke-width="3" stroke-linecap="round"/>
+<path d="M147 86 l2.6 5.6 6.1 .7 -4.6 4.2 1.3 6.1 -5.4 -3.1 -5.4 3.1 1.3 -6.1
+         -4.6 -4.2 6.1 -.7 Z" fill="#ffe6ab"/>
+<g fill="#ffe6ab" opacity=".85">
+  <circle cx="158" cy="80" r="1.8"/><circle cx="138" cy="76" r="1.4"/>
+  <circle cx="152" cy="108" r="1.5"/>
+</g>
+</svg>
