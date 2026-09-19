@@ -30,7 +30,8 @@
     "받아 오고, 고르고, 뉴스레터 꼴로 묶는 일을 저절로 돌게 만들었습니다.",
     "이제 손이 가는 것은 마지막에 한 번 읽어 보는 일뿐입니다.",
     "반나절이 십 분이 됐습니다."
-   ]
+   ],
+   "kind": "press"
   },
   {
    "ym": "2026-09",
@@ -47,28 +48,32 @@
     "알아본 것을 그냥 버리기 아까워 정리했습니다.",
     "바뀌는 것과 그대로인 것을 나눠 적었습니다.",
     "확정되지 않은 것은 확정되지 않았다고 적었습니다. 입시에서 잘못된 확신이 가장 위험합니다."
-   ]
+   ],
+   "kind": "school"
   },
   {
    "ym": "2026-09",
    "title": "목장 나눔터",
    "tag": "생활",
    "desc": "멜번방주교회 목장 모임을 위한 나눔 기록 공간.",
-   "url": "https://soonryu74.github.io/gajeong/"
+   "url": "https://soonryu74.github.io/gajeong/",
+   "kind": "church"
   },
   {
    "ym": "2026-09",
    "title": "GPT Image 2.5 프롬프트 갤러리",
    "tag": "도구",
    "desc": "한국어로 이미지를 만들 때 쓰는 프롬프트 시트와 결과 모음.",
-   "url": "https://soonryu74.github.io/gpt-image-2-5-gallery.html"
+   "url": "https://soonryu74.github.io/gpt-image-2-5-gallery.html",
+   "kind": "works"
   },
   {
    "ym": "2026-09",
    "title": "통합돌봄 사이버교육원",
    "tag": "돌봄",
    "desc": "통합돌봄 현장 실무자와 시민을 위한 원격 교육. 법령과 서식을 업무 순서대로 따라갑니다.",
-   "url": "https://soonryu74.github.io/edu/"
+   "url": "https://soonryu74.github.io/edu/",
+   "kind": "school"
   },
   {
    "ym": "2026-09",
@@ -85,7 +90,8 @@
     "효과가 있다고 나온 것도, 없다고 나온 것도 그대로 적었습니다.",
     "「이건 아직 모릅니다」라고 적는 칸을 일부러 남겨 뒀습니다.",
     "파는 곳으로 이어지는 링크는 하나도 넣지 않았습니다. 그래야 믿을 수 있는 글이 된다고 생각했습니다."
-   ]
+   ],
+   "kind": "clinic"
   },
   {
    "ym": "2026-09",
@@ -102,14 +108,16 @@
     "색이 진할수록 나쁘다는 것만 알면 읽을 수 있습니다.",
     "이것은 모니터링 도구이지 평가 도구가 아니라는 말을 화면에 적어 두었습니다.",
     "숫자는 쉽게 오해받고, 오해받은 숫자는 사람을 다치게 하기 때문입니다."
-   ]
+   ],
+   "kind": "clinic"
   },
   {
    "ym": "2026-09",
    "title": "고마움 상조",
    "tag": "생활",
    "desc": "장례 절차와 준비를 미리 알 수 있게 정리한 안내.",
-   "url": "https://soonryu74.github.io/sangjo/"
+   "url": "https://soonryu74.github.io/sangjo/",
+   "kind": "care"
   },
   {
    "ym": "2026-08",
@@ -129,14 +137,16 @@
     "한 번은 코로나19 화면에서 접종 피해보상 질의가 어느 해부터 끊긴 것처럼 보였습니다.",
     "국회가 그해부터 다른 말로 부르고 있었고, 낱말로만 세던 탓에 49건이 통째로 빠져 있었습니다.",
     "그 49건을 찾아 넣던 날이, 이 일을 하며 가장 기뻤던 날입니다."
-   ]
+   ],
+   "kind": "gov"
   },
   {
    "ym": "2026-08",
    "title": "생활 제휴 업체",
    "tag": "생활",
    "desc": "동네 생활 업체를 모아 보이는 제휴 안내 화면.",
-   "url": "https://soonryu74.github.io/jehyu.html"
+   "url": "https://soonryu74.github.io/jehyu.html",
+   "kind": "shop"
   },
   {
    "ym": "2026-08",
@@ -153,14 +163,16 @@
     "지도 위에서 반경을 정하면 업종 분포를 읽어 주도록 만들었습니다.",
     "결정을 대신해 주지는 않습니다.",
     "감으로 정하기 전에 한 번 더 보게 하는 것, 그것이 이 화면이 하는 일의 전부입니다."
-   ]
+   ],
+   "kind": "block"
   },
   {
    "ym": "2026-08",
    "title": "AI 1인 기업 학습 가이드",
    "tag": "도구",
    "desc": "혼자 만들고 혼자 운영하는 법을 단계별로 정리한 교재.",
-   "url": "https://soonryu74.github.io/guide.html"
+   "url": "https://soonryu74.github.io/guide.html",
+   "kind": "works"
   },
   {
    "ym": "2026-08",
@@ -177,7 +189,8 @@
     "그래서 확인할 수 있는 것만 보여 주기로 했습니다.",
     "자격과 경력이 확인된 전문가와, 그가 필요한 사람을 잇는 자리입니다.",
     "화려하게 만들지 않았습니다. 급한 사람이 헤매지 않는 것이 먼저였습니다."
-   ]
+   ],
+   "kind": "care"
   },
   {
    "ym": "2026-08",
@@ -194,119 +207,136 @@
     "제도별로 나눠 적지 않고, 사람이 처한 상황에서 시작하도록 만들었습니다.",
     "법령과 서식은 원문으로 가는 링크를 함께 뒀습니다.",
     "확인할 수 없는 것은 싣지 않았습니다."
-   ]
+   ],
+   "kind": "care"
   },
   {
    "ym": "2026-08",
    "title": "아파트 실거래가 분석",
    "tag": "부동산",
    "desc": "국토교통부 실거래가를 매일 받아 단지별·평형별로 보여 줍니다. 처음으로 저절로 도는 것을 만든 자리입니다.",
-   "url": "https://soonryu74.github.io/silgeorae-lab.html"
+   "url": "https://soonryu74.github.io/silgeorae-lab.html",
+   "kind": "block"
   },
   {
    "ym": "2026-08",
    "title": "갈매동 부동산",
    "tag": "부동산",
    "desc": "동네 시세와 매물, 안전한 계약까지. 여기서 모든 것이 시작됐습니다.",
-   "url": "https://soonryu74.github.io/budongsan.html"
+   "url": "https://soonryu74.github.io/budongsan.html",
+   "kind": "block"
   },
   {
    "ym": "2026-08",
    "title": "부동산 생활 안내 (첫 화면)",
    "tag": "부동산",
    "desc": "아래 열두 가지 안내로 들어가는 첫 화면입니다.",
-   "url": "https://soonryu74.github.io/jaryo.html"
+   "url": "https://soonryu74.github.io/jaryo.html",
+   "kind": "block"
   },
   {
    "ym": "2026-08",
    "title": "주택청약 안내",
    "tag": "부동산",
    "desc": "청약종합저축, 국민주택과 민영주택의 차이, 가점제와 특별공급, 청약홈 신청 절차까지.",
-   "url": "https://soonryu74.github.io/cheongyak.html"
+   "url": "https://soonryu74.github.io/cheongyak.html",
+   "kind": "home"
   },
   {
    "ym": "2026-08",
    "title": "부동산 세금 안내",
    "tag": "부동산",
    "desc": "취득세·재산세·종합부동산세·양도소득세·임대소득세를 살 때, 가지고 있을 때, 팔 때로 나눠 정리했습니다.",
-   "url": "https://soonryu74.github.io/sege.html"
+   "url": "https://soonryu74.github.io/sege.html",
+   "kind": "office"
   },
   {
    "ym": "2026-08",
    "title": "전세사기 예방과 보증금 보호",
    "tag": "부동산",
    "desc": "전세사기 수법과 계약 전후 점검표, 안심전세앱, 보증금 반환보증, 임차권등기명령, 피해자 지원까지.",
-   "url": "https://soonryu74.github.io/jeonse-sagi.html"
+   "url": "https://soonryu74.github.io/jeonse-sagi.html",
+   "kind": "office"
   },
   {
    "ym": "2026-08",
    "title": "주택임대차 안내",
    "tag": "부동산",
    "desc": "대항력과 우선변제권, 확정일자, 최우선변제, 계약갱신청구권, 전월세상한제와 신고제를 쉬운 말로.",
-   "url": "https://soonryu74.github.io/jutaek-imdaecha.html"
+   "url": "https://soonryu74.github.io/jutaek-imdaecha.html",
+   "kind": "home"
   },
   {
    "ym": "2026-08",
    "title": "중개보수 요율표",
    "tag": "부동산",
    "desc": "매매와 임대차 요율, 계산하는 법, 부가세, 월세를 보증금으로 환산하는 법까지.",
-   "url": "https://soonryu74.github.io/junggae.html"
+   "url": "https://soonryu74.github.io/junggae.html",
+   "kind": "office"
   },
   {
    "ym": "2026-08",
    "title": "관리비 바로 알기",
    "tag": "부동산",
    "desc": "관리비 항목이 어떻게 짜이는지, 공개 자료를 어디서 보는지, 장기수선충당금과 수선유지비가 어떻게 다른지.",
-   "url": "https://soonryu74.github.io/gwanribi.html"
+   "url": "https://soonryu74.github.io/gwanribi.html",
+   "kind": "office"
   },
   {
    "ym": "2026-08",
    "title": "이사·전입신고 체크리스트",
    "tag": "부동산",
    "desc": "전입신고와 확정일자 받는 법, 이사 전후로 해야 할 일, 관리비와 장기수선충당금 정산, 주소 이전까지.",
-   "url": "https://soonryu74.github.io/isa.html"
+   "url": "https://soonryu74.github.io/isa.html",
+   "kind": "home"
   },
   {
    "ym": "2026-08",
    "title": "부동산 매매 절차",
    "tag": "부동산",
    "desc": "실거래가 확인부터 계약, 계약금·중도금·잔금, 소유권 이전등기, 하자담보책임까지 순서대로.",
-   "url": "https://soonryu74.github.io/maemae.html"
+   "url": "https://soonryu74.github.io/maemae.html",
+   "kind": "home"
   },
   {
    "ym": "2026-08",
    "title": "실거래가 확인·활용법",
    "tag": "부동산",
    "desc": "국토교통부 공개시스템으로 실거래가를 확인하고, 공시가격·시세와 함께 제대로 읽는 법.",
-   "url": "https://soonryu74.github.io/silgeorae.html"
+   "url": "https://soonryu74.github.io/silgeorae.html",
+   "kind": "home"
   },
   {
    "ym": "2026-08",
    "title": "등기부·건축물대장 확인법",
    "tag": "부동산",
    "desc": "등기사항전부증명서의 갑구와 을구를 보는 법, 건축물대장과 토지이용계획 확인법, 계약 전 점검할 곳.",
-   "url": "https://soonryu74.github.io/deungi-daejang.html"
+   "url": "https://soonryu74.github.io/deungi-daejang.html",
+   "kind": "office"
   },
   {
    "ym": "2026-08",
    "title": "상가 계약 체크리스트",
    "tag": "부동산",
    "desc": "업종별 규제와 교육환경보호구역, 건축물 용도와 소방 확인, 상가건물임대차보호법의 환산보증금과 권리금까지.",
-   "url": "https://soonryu74.github.io/sangga.html"
+   "url": "https://soonryu74.github.io/sangga.html",
+   "kind": "shop"
   },
   {
    "ym": "2026-08",
    "title": "아파트 시세 지도",
    "tag": "부동산",
    "desc": "지도 위에서 가격대와 평형으로 좁혀 보고, 핀을 누르면 최근 실거래가가 나옵니다.",
-   "url": "https://soonryu74.github.io/jido-search.html"
+   "url": "https://soonryu74.github.io/jido-search.html",
+   "kind": "block"
   },
   {
    "ym": "2026-08",
    "title": "부동산 뉴스·정책 모음",
    "tag": "부동산",
    "desc": "대출·세금·공급·청약 관련 정책 뉴스를 매일 저절로 모읍니다. 국토교통부와 청약홈 등 공식 자료로 바로 갑니다.",
-   "url": "https://soonryu74.github.io/news.html"
+   "url": "https://soonryu74.github.io/news.html",
+   "kind": "press"
   }
  ]
 }

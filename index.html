@@ -96,41 +96,58 @@
          border-radius:50%; background:var(--night); }
   .town .wrap{ position:relative; z-index:1; }
 
-  .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(158px,1fr));
-         gap:8px 0; align-items:end; }
+  .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(134px,1fr));
+         gap:0; align-items:end; }
   .house{ background:none; border:0; padding:0; cursor:pointer; font-family:inherit;
           display:block; width:100%; position:relative; }
   .house svg{ display:block; width:100%; height:auto; overflow:visible; transition:.3s; }
 
   .hill{ fill:#182338; }
-  .hln{ fill:none; stroke:#2b3a55; stroke-width:2; stroke-linecap:round; }
-  .road{ fill:none; stroke:#243149; stroke-width:4; stroke-linecap:round; }
-  .trunk{ fill:#3b3026; }
-  .leaf{ fill:#2c4438; stroke:#375548; stroke-width:1.4; }
-  .lamp-p{ fill:none; stroke:#37455f; stroke-width:2.4; stroke-linecap:round; }
+  .road{ fill:#1e2a3f; }
+  .curb{ fill:none; stroke:#2c3a54; stroke-width:1.6; }
+  .cobble{ fill:none; stroke:#26334b; stroke-width:1.4; stroke-linecap:round; }
+  .lamp-p{ fill:none; stroke:#3a475f; stroke-width:2.6; stroke-linecap:round; }
   .lamp-h{ fill:#f2d79a; }
-  .lamp-g{ fill:var(--glow); opacity:.13; }
+  .lamp-g{ fill:var(--glow); opacity:.14; }
+  .trunk{ fill:#3b3026; }
+  .leaf{ fill:#2c4438; stroke:#375548; stroke-width:1.3; }
 
-  .rf{ fill:var(--rc,#5f6b9c); stroke:rgba(0,0,0,.34); stroke-width:2;
-       stroke-linejoin:round; transition:.3s; filter:saturate(.72) brightness(.62); }
-  .bd{ fill:#1e2a3e; stroke:#33435e; stroke-width:2; transition:.3s; }
-  .ch{ fill:var(--rc,#5f6b9c); stroke:rgba(0,0,0,.34); stroke-width:1.6;
-       filter:saturate(.72) brightness(.55); transition:.3s; }
-  .wn{ fill:#f0cf8e; stroke:rgba(0,0,0,.3); stroke-width:1.2; opacity:.45; transition:.3s; }
-  .dr{ fill:#2a1f14; stroke:#3d2f20; stroke-width:1.4; transition:.3s; }
-  .pool{ fill:var(--glow); opacity:.1; transition:.3s; }
-  .ty{ fill:#8793a8; font-size:11px; font-weight:700; letter-spacing:.14em; transition:.3s; }
-  .tm{ fill:#c2cdde; font-size:26px; font-family:var(--serif); font-weight:700; transition:.3s; }
+  .fc{ fill:var(--fc,#4b5672); stroke:rgba(0,0,0,.4); stroke-width:1.5;
+       filter:brightness(.62) saturate(.7); transition:.3s; }
+  .rfe{ fill:var(--rc,#3e4954); stroke:rgba(0,0,0,.42); stroke-width:1.7;
+        stroke-linejoin:round; filter:brightness(.66) saturate(.72); transition:.3s; }
+  .ch{ fill:var(--rc,#3e4954); stroke:rgba(0,0,0,.42); stroke-width:1.3;
+       filter:brightness(.6) saturate(.72); transition:.3s; }
+  .acc{ fill:var(--rc,#3e4954); stroke:rgba(0,0,0,.34); stroke-width:1.4;
+        filter:brightness(.72) saturate(.66); transition:.3s; }
+  .awn{ fill:var(--rc,#3e4954); stroke:rgba(0,0,0,.34); stroke-width:1.3;
+        filter:brightness(.78) saturate(.8); transition:.3s; }
+  .flag{ fill:var(--rc,#3e4954); filter:brightness(.9) saturate(.9); }
+  .col{ fill:#d6cbb4; stroke:rgba(0,0,0,.34); stroke-width:1; filter:brightness(.5) saturate(.6); transition:.3s; }
+  .stp{ fill:#cfc4ad; stroke:rgba(0,0,0,.34); stroke-width:1; filter:brightness(.5) saturate(.6); transition:.3s; }
+  .cross{ fill:none; stroke:#ded2b8; stroke-width:2.6; stroke-linecap:round;
+          filter:brightness(.6) saturate(.6); transition:.3s; }
+  .hand{ fill:none; stroke:#2a2318; stroke-width:1.6; stroke-linecap:round; }
+  .pot{ fill:#4a3526; }
+  .ln{ fill:none; stroke:rgba(0,0,0,.34); stroke-width:1.4; stroke-linecap:round; }
+  .wn{ fill:#f0cf8e; stroke:rgba(0,0,0,.34); stroke-width:1.2; opacity:.38; transition:.3s; }
+  .dr{ fill:#2a1f14; stroke:#44341f; stroke-width:1.4; transition:.3s; }
+  .sgn{ fill:#1d1710; stroke:#4a3c24; stroke-width:1.4; transition:.3s; }
+  .pool{ fill:var(--glow); opacity:.08; transition:.3s; }
 
   /* 이야기가 있는 집 — 온 집에 불이 켜집니다 */
-  .house.lit svg{ filter:drop-shadow(0 0 18px rgba(240,201,130,.4)); }
-  .house.lit .rf{ filter:saturate(1) brightness(1.02); stroke:rgba(0,0,0,.3); }
-  .house.lit .ch{ filter:saturate(1) brightness(.9); }
-  .house.lit .bd{ fill:#4a3a1d; stroke:#7d6432; }
+  .house.lit svg{ filter:drop-shadow(0 0 18px rgba(240,201,130,.42)); }
+  .house.lit .fc{ filter:brightness(1.1) saturate(1.06); }
+  .house.lit .acc,.house.lit .awn,.house.lit .flag{ filter:brightness(1.12) saturate(1.05); }
+  .house.lit .col,.house.lit .stp{ filter:brightness(1.04) saturate(.95); }
+  .house.lit .cross{ filter:brightness(1.1) saturate(.9); }
+  .house.lit .rfe{ filter:brightness(1.02) saturate(1); }
+  .house.lit .ch{ filter:brightness(.95) saturate(1); }
   .house.lit .wn{ opacity:1; fill:#ffe6ab; }
-  .house.lit .dr{ fill:#6b5326; stroke:#8a6d33; }
+  .house.lit .dr{ fill:#6b5326; stroke:#8f7136; }
+  .house.lit .sgn{ fill:#3a2d17; stroke:#8f7136; }
   .house.lit .pool{ opacity:.3; }
-  .house.lit .ty{ fill:rgba(255,230,171,.75); }
+  .house.lit .ty{ fill:rgba(255,230,171,.78); }
   .house.lit .tm{ fill:#ffe6ab; }
   .smoke{ opacity:0; }
   .house.lit .smoke{ opacity:1; }
@@ -140,24 +157,34 @@
   @keyframes puff{
     0%{ opacity:0; transform:translate(0,0) scale(.5); }
     18%{ opacity:.32; }
-    100%{ opacity:0; transform:translate(-8px,-32px) scale(2.2); } }
+    100%{ opacity:0; transform:translate(-8px,-34px) scale(2.2); } }
 
   .house:hover svg,.house:focus-visible svg{ transform:translateY(-6px);
-      filter:drop-shadow(0 0 24px rgba(240,201,130,.58)); }
-  .house:hover .rf,.house:focus-visible .rf{ filter:saturate(1.08) brightness(1.14); }
-  .house:hover .ch,.house:focus-visible .ch{ filter:saturate(1.08) brightness(1); }
-  .house:hover .bd,.house:focus-visible .bd{ fill:#59451f; stroke:#96793c; }
+      filter:drop-shadow(0 0 26px rgba(240,201,130,.6)); z-index:2; position:relative; }
+  .house:hover .fc,.house:focus-visible .fc{ filter:brightness(1.32) saturate(1.14); }
+  .house:hover .acc,.house:focus-visible .acc,
+  .house:hover .awn,.house:focus-visible .awn,
+  .house:hover .flag,.house:focus-visible .flag{ filter:brightness(1.34) saturate(1.12); }
+  .house:hover .col,.house:focus-visible .col,
+  .house:hover .stp,.house:focus-visible .stp{ filter:brightness(1.2) saturate(1); }
+  .house:hover .cross,.house:focus-visible .cross{ filter:brightness(1.3); }
+  .house:hover .rfe,.house:focus-visible .rfe{ filter:brightness(1.2) saturate(1.1); }
+  .house:hover .ch,.house:focus-visible .ch{ filter:brightness(1.12) saturate(1.1); }
   .house:hover .wn,.house:focus-visible .wn{ opacity:1; fill:#fff0c6; }
-  .house:hover .dr,.house:focus-visible .dr{ fill:#7d6129; stroke:#9c7c38; }
+  .house:hover .dr,.house:focus-visible .dr{ fill:#7d6129; stroke:#a08039; }
+  .house:hover .sgn,.house:focus-visible .sgn{ fill:#4a3a1d; stroke:#a08039; }
   .house:hover .pool,.house:focus-visible .pool{ opacity:.4; }
   .house:hover .tm,.house:focus-visible .tm{ fill:#fff0c6; }
-  .house:hover .ty,.house:focus-visible .ty{ fill:rgba(255,240,198,.8); }
+  .house:hover .ty,.house:focus-visible .ty{ fill:rgba(255,240,198,.82); }
   .house:focus{ outline:none; }
-  .house:focus-visible{ outline:2px solid var(--sig); outline-offset:4px; border-radius:8px; }
-  .house .nm{ display:block; margin:2px 6px 14px; font-size:.79rem; color:var(--muted);
-      line-height:1.45; opacity:0; transform:translateY(-4px); transition:.3s; min-height:2.9em; }
-  .house:hover .nm,.house:focus-visible .nm{ opacity:1; transform:none; color:var(--body); }
-  @media (hover:none){ .house .nm{ opacity:1; transform:none; } }
+  .house:focus-visible{ outline:2px solid var(--sig); outline-offset:3px; border-radius:6px; }
+  .house .nm{ display:block; margin:9px 5px 1px; font-size:.79rem; color:#c6d0df;
+      line-height:1.4; font-weight:600; transition:.25s; }
+  .house .wh{ display:block; margin:0 5px 18px; font-size:.68rem; color:#66728a;
+      letter-spacing:.06em; transition:.25s; }
+  .house:hover .nm,.house:focus-visible .nm{ color:#ffe6ab; }
+  .house:hover .wh,.house:focus-visible .wh{ color:rgba(255,230,171,.62); }
+  .house.lit .nm{ color:#e7edf6; }
   @media (prefers-reduced-motion:reduce){
     .sky i,.smoke circle{ animation:none; } .smoke circle{ opacity:.2; } }
 
@@ -214,7 +241,9 @@
     .abio .who{ font-size:1.3rem; }
     .town{ padding:52px 0 20px; }
     .town h2{ font-size:1.36rem; }
-    .grid{ grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); gap:6px 0; }
+    .grid{ grid-template-columns:repeat(auto-fill,minmax(104px,1fr)); gap:0; }
+    .house .nm{ font-size:.71rem; margin:7px 3px 1px; }
+    .house .wh{ font-size:.63rem; margin:0 3px 15px; }
     .sky{ height:330px; } .moon{ width:46px; height:46px; right:7%; top:18px; }
     .moon:after{ width:43px; height:43px; right:-7px; top:-5px; }
     .house .nm{ font-size:.72rem; }
@@ -327,61 +356,151 @@
     setupBgm(d.bgm||{});
   }
 
-  var ROOF=['#a15b52','#4f8a80','#a8763f','#66709f','#7f5f92','#6f8a4e','#b08a4c'];
+  var FC=['#6d5246','#4d5f5b','#6d5d40','#4b5672','#64495d','#566140','#705b4b','#40565f'];
+  var RC=['#8a4038','#3f4a55','#7a5330','#4a4f63','#5d3f4e','#46583a','#7d5a3c','#38505c'];
+
+  // 작은 그리기 도구
+  function W(x,y,w,h,r){ return '<rect class="wn" x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="'+(r||2)+'"/>'; }
+  function Wrow(xs,y,w,h,r){ return xs.map(function(x){ return W(x,y,w,h,r); }).join(''); }
+  function F(x,y,w,h,r){ return '<rect class="fc" x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="'+(r||1)+'"/>'; }
+  function R(d){ return '<path class="rfe" d="'+d+'"/>'; }
+  function Dr(x,y,w,h){ return '<path class="dr" d="M'+x+' '+(y+h)+' L'+x+' '+(y+w/2)+
+      ' A'+(w/2)+' '+(w/2)+' 0 0 1 '+(x+w)+' '+(y+w/2)+' L'+(x+w)+' '+(y+h)+' Z"/>'; }
+  function Chim(x,y,h){ return '<rect class="ch" x="'+x+'" y="'+y+'" width="10" height="'+h+'" rx="2"/>'; }
+  function Smoke(x,y){ return '<g class="smoke" transform="translate('+x+','+y+')">'+
+      '<circle r="3"/><circle r="3.6"/><circle r="3"/></g>'; }
+
+  // 건물 종류별 그림 — 바닥은 언제나 y=156
+  var BLD = {
+    gov: function(){ return (
+      R('M6 94 L60 64 L114 94 Z')+
+      '<rect class="col" x="46" y="44" width="28" height="20" rx="1"/>'+
+      R('M42 45 A18 17 0 0 1 78 45 Z')+
+      '<path class="cross" d="M60 28 L60 14"/><circle class="cross" cx="60" cy="11" r="2.6"/>'+
+      F(12,94,96,46)+
+      Wrow([24,42,60,78],102,10,32,2)+
+      [18,33,48,63,78,93].map(function(x){
+        return '<rect class="col" x="'+x+'" y="100" width="9" height="40" rx="1.5"/>'; }).join('')+
+      '<rect class="stp" x="10" y="140" width="100" height="8" rx="1"/>'+
+      '<rect class="stp" x="4" y="148" width="112" height="8" rx="1"/>'); },
+
+    press: function(){ return (
+      F(6,48,108,108,1)+
+      '<rect class="acc" x="2" y="42" width="116" height="7" rx="2"/>'+
+      '<rect class="sgn" x="16" y="54" width="88" height="20" rx="3"/>'+
+      '<path class="ln" d="M24 61 H96 M24 66 H80 M24 71 H90"/>'+
+      Wrow([14,38,62,86],84,20,20,2)+ Wrow([14,38,62,86],112,20,20,2)+
+      W(14,140,20,16,2)+W(86,140,20,16,2)+ Dr(48,132,24,24)+
+      '<path class="acc" d="M104 42 L104 16"/>'+
+      '<path class="flag" d="M104 17 L104 30 L86 23.5 Z"/>'); },
+
+    school: function(){ return (
+      F(2,96,116,60,1)+
+      Wrow([8,28,80,100],104,16,20,2)+ W(8,132,16,16,2)+W(100,132,16,16,2)+
+      F(46,44,28,52,1)+ R('M40 44 L60 20 L80 44 Z')+
+      '<circle class="acc" cx="60" cy="62" r="9"/>'+
+      '<path class="hand" d="M60 62 L60 55 M60 62 L65 65"/>'+
+      W(52,76,16,14,2)+ Dr(48,126,24,30)); },
+
+    church: function(){ return (
+      F(30,90,60,66,1)+ R('M24 90 L60 58 L96 90 Z')+
+      F(6,68,22,88,1)+ R('M1 68 L17 30 L33 68 Z')+
+      '<path class="cross" d="M17 30 L17 13 M10.5 19 H23.5"/>'+
+      '<path class="wn" d="M40 132 L40 112 A8 8 0 0 1 56 112 L56 132 Z"/>'+
+      '<path class="wn" d="M66 132 L66 112 A8 8 0 0 1 82 112 L82 132 Z"/>'+
+      W(11,84,12,14,5)+
+      Dr(48,132,24,24)); },
+
+    clinic: function(){ return (
+      F(6,70,108,86,1)+
+      '<rect class="acc" x="2" y="64" width="116" height="7" rx="2"/>'+
+      '<rect class="acc" x="52" y="38" width="16" height="26" rx="2"/>'+
+      '<rect class="acc" x="47" y="44" width="26" height="14" rx="2"/>'+
+      Wrow([14,40,66,92],80,16,18,2)+ Wrow([14,40,66,92],106,16,18,2)+
+      W(14,132,16,18,2)+W(92,132,16,18,2)+ Dr(46,128,28,28)); },
+
+    care: function(){ return (
+      F(12,98,96,58,2)+ R('M2 100 L60 58 L118 100 Z')+
+      Chim(84,66,34)+
+      W(22,112,24,22,4)+ W(74,112,24,22,4)+
+      '<rect class="pot" x="22" y="134" width="24" height="5" rx="2"/>'+
+      '<rect class="pot" x="74" y="134" width="24" height="5" rx="2"/>'+
+      Dr(50,124,20,32)); },
+
+    shop: function(){ return (
+      F(4,62,112,94,1)+
+      Wrow([12,48,84],72,24,22,2)+
+      '<path class="awn" d="M2 104 H118 L118 118 Q108 126 98 118 Q88 110 78 118 Q68 126 58 118 Q48 110 38 118 Q28 126 18 118 Q8 110 2 118 Z"/>'+
+      '<rect class="wn" x="10" y="128" width="46" height="28" rx="2"/>'+
+      Dr(66,124,26,32)+
+      '<path class="cross" d="M96 102 L96 94 M96 94 H110"/>'+
+      '<rect class="sgn" x="100" y="96" width="14" height="11" rx="2"/>'); },
+
+    works: function(){ return (
+      F(4,98,112,58,1)+
+      [4,42,80].map(function(x){ return R('M'+x+' 98 L'+x+' 74 L'+(x+36)+' 98 Z')+
+        '<rect class="wn" x="'+(x+6)+'" y="80" width="10" height="13" rx="2" opacity=".55"/>'; }).join('')+
+      Chim(96,56,42)+
+      W(14,110,22,20,2)+ W(84,110,22,20,2)+
+      '<rect class="dr" x="44" y="118" width="32" height="38" rx="2"/>'+
+      '<path class="ln" d="M44 128 H76 M44 138 H76"/>'); },
+
+    block: function(){ return (
+      F(0,84,32,72,1)+ R('M-3 84 L16 62 L35 84 Z')+
+      Wrow([5,19],94,10,12,2)+ Wrow([5,19],114,10,12,2)+ W(11,136,10,20,2)+
+      F(34,60,32,96,1)+ '<rect class="acc" x="31" y="55" width="38" height="6" rx="2"/>'+
+      '<rect class="acc" x="44" y="44" width="12" height="12" rx="1"/>'+
+      Wrow([39,53],68,10,12,2)+ Wrow([39,53],88,10,12,2)+ Wrow([39,53],108,10,12,2)+ W(45,134,10,22,2)+
+      F(68,96,26,60,1)+ R('M65 96 L81 76 L97 96 Z')+
+      Wrow([72,84],104,8,11,2)+ W(76,128,12,28,2)+
+      F(96,72,24,84,1)+ '<rect class="acc" x="93" y="67" width="30" height="6" rx="2"/>'+
+      Wrow([101,111],80,7,10,2)+ Wrow([101,111],98,7,10,2)+ Wrow([101,111],116,7,10,2)+ W(102,136,14,20,2)); },
+
+    home: function(){ return (
+      F(16,98,88,58,2)+ R('M8 98 L60 60 L112 98 Z')+
+      Chim(80,68,32)+
+      W(52,76,16,13,2)+
+      W(26,112,20,20,3)+ W(74,112,20,20,3)+
+      Dr(50,126,20,30)); },
+
+    office: function(){ return (
+      F(8,82,104,74,1)+
+      R('M4 82 L4 70 L22 70 L22 58 L40 58 L40 46 L80 46 L80 58 L98 58 L98 70 L116 70 L116 82 Z')+
+      Wrow([16,42,68,94],90,18,18,2)+ Wrow([16,42,68,94],114,18,18,2)+
+      W(16,138,18,18,2)+ W(94,138,18,18,2)+ Dr(46,126,28,30)+
+      '<path class="ln" d="M25 90 V108 M51 90 V108 M77 90 V108 M103 90 V108"/>'); }
+  };
 
   function house(x,i){
     var y=x.ym.slice(0,4), m=+x.ym.slice(5,7), lit=!!(x.story&&x.story.length);
-    // 집마다 조금씩 다른 모양. 목록 자리로 정해지므로 언제 봐도 같은 집입니다.
-    var h=[42,50,58][i%3], bw=[90,84,88,82][i%4], bx=(120-bw)/2,
-        ap=64-h, wins=lit?2:[1,2,2][i%3],
-        cx=(i%2)?28:82, hasCh=(lit||i%3===0),
-        deco=i%3, dip=[138,141,136,140][i%4];
-
-    var chimTop=ap+10;
-    var chim = hasCh ? '<rect class="ch" x="'+cx+'" y="'+chimTop+'" width="10" height="'+(64-chimTop)+'" rx="2"/>' : '';
-    var smoke = lit ? '<g class="smoke" transform="translate('+(cx+5)+','+(chimTop-4)+')">'+
-        '<circle r="3"/><circle r="3.6"/><circle r="3"/></g>' : '';
-
-    // 언덕과 길 — 카드 끝에서 높이가 같아 옆집과 이어집니다
-    var hill='<path class="hill" d="M0 141 Q60 '+dip+' 120 141 L120 152 L0 152 Z"/>'+
-             '<path class="hln" d="M0 141 Q60 '+dip+' 120 141"/>'+
-             '<path class="road" d="M0 147.5 Q60 '+(dip+6.5)+' 120 147.5"/>';
-
-    // 나무 또는 가로등
-    var tree='', lamp='';
-    if(deco===0){ var tx=(i%2)?10:110;
-      tree='<g transform="translate('+tx+',0)">'+
-        '<rect class="trunk" x="-2" y="126" width="4" height="15" rx="2"/>'+
-        '<circle class="leaf" cx="0" cy="120" r="8"/>'+
-        '<circle class="leaf" cx="-5.5" cy="126" r="6"/>'+
-        '<circle class="leaf" cx="5.5" cy="126" r="5.5"/></g>'; }
-    else if(deco===1){ var lx=(i%2)?9:111;
-      lamp='<g transform="translate('+lx+',0)">'+
-        '<circle class="lamp-g" cx="0" cy="112" r="15"/>'+
-        '<path class="lamp-p" d="M0 140 L0 116"/>'+
-        '<path class="lamp-h" d="M-5 116 L5 116 L3 108 L-3 108 Z"/></g>'; }
-
-    // 창문
-    var w='';
-    if(wins===1){ w='<rect class="wn" x="52" y="'+(ap+h*0.52).toFixed(1)+'" width="16" height="13" rx="3"/>'; }
-    else { w='<rect class="wn" x="44" y="'+(ap+h*0.56).toFixed(1)+'" width="13" height="12" rx="3"/>'+
-             '<rect class="wn" x="63" y="'+(ap+h*0.56).toFixed(1)+'" width="13" height="12" rx="3"/>'; }
+    var k=BLD[x.kind]?x.kind:'home';
+    var deco=i%4, dec='';
+    if(deco===0){ var tx=(i%2)?8:112;
+      dec='<g transform="translate('+tx+',0)">'+
+        '<rect class="trunk" x="-2" y="144" width="4" height="13" rx="2"/>'+
+        '<circle class="leaf" cx="0" cy="138" r="7.5"/>'+
+        '<circle class="leaf" cx="-5" cy="144" r="5.5"/>'+
+        '<circle class="leaf" cx="5" cy="144" r="5"/></g>'; }
+    else if(deco===1){ var lx=(i%2)?7:113;
+      dec='<g transform="translate('+lx+',0)">'+
+        '<circle class="lamp-g" cx="0" cy="128" r="15"/>'+
+        '<path class="lamp-p" d="M0 157 L0 132"/>'+
+        '<path class="lamp-h" d="M-5 132 L5 132 L3 124 L-3 124 Z"/></g>'; }
 
     return '<button class="house'+(lit?' lit':'')+'" type="button" data-i="'+i+'"'+
-      ' style="--rc:'+ROOF[i%ROOF.length]+'" aria-label="'+esc(x.title)+'">'+
-      '<svg viewBox="0 0 120 152" aria-hidden="true">'+
-        hill + tree +
-        '<ellipse class="pool" cx="60" cy="140" rx="48" ry="7"/>'+
-        smoke + chim +
-        '<path class="rf" d="M59 '+ap+' Q60 '+(ap-3)+' 61 '+ap+' L117 64 Q119 66 116 66 L4 66 Q1 66 3 64 Z"/>'+
-        '<rect class="bd" x="'+bx+'" y="65" width="'+bw+'" height="75" rx="5"/>'+
-        w +
-        '<rect class="dr" x="54" y="126" width="13" height="14" rx="2"/>'+
-        '<text class="ty" x="60" y="90" text-anchor="middle">'+esc(y)+'</text>'+
-        '<text class="tm" x="60" y="118" text-anchor="middle">'+m+'월</text>'+
-        lamp +
+      ' style="--fc:'+FC[i%FC.length]+';--rc:'+RC[i%RC.length]+'"'+
+      ' aria-label="'+esc(x.title)+'">'+
+      '<svg viewBox="0 0 120 170" aria-hidden="true">'+
+        '<rect class="road" x="0" y="156" width="120" height="14"/>'+
+        '<path class="curb" d="M0 156.5 H120"/>'+
+        '<path class="cobble" d="M8 163 H26 M34 163 H52 M60 163 H78 M86 163 H104"/>'+
+        '<ellipse class="pool" cx="60" cy="157" rx="52" ry="7"/>'+
+        dec +
+        (lit?Smoke(k==='care'?89:(k==='works'?101:85), k==='care'?62:(k==='works'?52:64)):'')+
+        BLD[k]() +
       '</svg>'+
-      '<span class="nm">'+esc(x.title)+'</span></button>';
+      '<span class="nm">'+esc(x.title)+'</span>'+
+      '<span class="wh">'+esc(y)+' · '+m+'월</span></button>';
   }
 
   function sky(){
