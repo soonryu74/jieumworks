@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>지음웍스 — 인터넷에 지은 집들</title>
-<meta name="description" content="당신의 인터넷에 거할 곳이 있습니까. 공공 자료를 쓸 만하게 만드는 일을 혼자 해 온 기록.">
+<meta name="description" content="당신은 인터넷에 거할 곳이 있습니까. 공공 자료를 쓸 만하게 만드는 일을 혼자 해 온 기록.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="지음웍스">
 <meta property="og:title" content="지음웍스 — 인터넷에 지은 집들">
@@ -16,16 +16,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
 <style>
   :root{
-    --night:#0d1526; --wall:#162031; --wall-2:#1b2536; --edge:#26324a;
-    --ink:#eef2f8; --body:#a9b4c6; --muted:#6c7789;
-    --glow:#e9bd76; --glow-soft:rgba(233,189,118,.16);
-    --sig:#7fd0c8; --line:rgba(255,255,255,.07);
+    --night:#2b2440; --dusk-1:#f2a65a; --dusk-2:#c9648a; --dusk-3:#6b4a86;
+    --wall:#3a3152; --wall-2:#453a60; --edge:#584a76;
+    --ink:#fdf6ee; --body:#ddd0e4; --muted:#a294b8;
+    --glow:#ffcf87; --glow-soft:rgba(255,207,135,.22);
+    --sig:#8fd8cf; --line:rgba(255,255,255,.11);
     --serif:'Gowun Batang',"Apple SD Gothic Neo",serif;
     --sans:'Gowun Dodum','Pretendard',"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
   }
   *{ box-sizing:border-box; }
   html{ -webkit-text-size-adjust:100%; text-size-adjust:100%; scroll-behavior:smooth; }
-  body{ margin:0; background:var(--night); color:var(--ink); font-family:var(--sans);
+  body{ margin:0; color:var(--ink);
+        background:linear-gradient(180deg,
+          #352c58 0%, #45386a 16%, #5e4779 34%, #855a83 52%,
+          #b06e80 68%, #d98a70 82%, #eda866 93%, #f6c084 100%);
+        background-attachment:fixed; font-family:var(--sans);
         line-height:1.8; word-break:keep-all; overflow-x:hidden; }
   a{ color:var(--sig); }
   .wrap{ max-width:1000px; margin:0 auto; padding:0 24px; }
@@ -34,7 +39,7 @@
   .gate{ position:relative; padding:96px 0 84px; text-align:center; overflow:hidden; }
   .gate:before{ content:''; position:absolute; left:50%; top:-180px; width:900px; height:560px;
       transform:translateX(-50%); pointer-events:none;
-      background:radial-gradient(ellipse at center, var(--glow-soft), transparent 68%); }
+      background:radial-gradient(ellipse at center, rgba(255,231,180,.5), rgba(255,190,130,.18) 42%, transparent 70%); }
   .gate .wrap{ position:relative; }
   .mark{ font-size:.72rem; letter-spacing:.42em; color:var(--muted); font-weight:700; }
   .gate h1{ font-family:var(--serif); font-weight:700; margin:26px 0 0;
@@ -43,26 +48,73 @@
   .gate .say{ margin:26px auto 0; max-width:34em; color:var(--body); font-size:1rem; }
   .gate .say b{ color:var(--ink); font-weight:600; }
 
-  .bgm{ margin-top:32px; display:inline-flex; align-items:center; gap:10px;
-        background:transparent; color:var(--glow); border:1px solid rgba(233,189,118,.42);
+  .bgm{ margin-top:26px; display:inline-flex; align-items:center; gap:10px;
+        background:rgba(255,255,255,.34); color:#7a3f2a; border:1px solid rgba(122,63,42,.34);
         border-radius:999px; padding:11px 22px; font-family:var(--sans); font-size:.88rem;
         font-weight:600; cursor:pointer; transition:.25s; }
-  .bgm:hover{ background:rgba(233,189,118,.1); }
-  .bgm[disabled]{ color:var(--muted); border-color:var(--edge); cursor:default; }
+  .bgm:hover{ background:rgba(255,255,255,.56); }
+  .bgm[disabled]{ color:rgba(74,40,62,.5); border-color:rgba(74,40,62,.22);
+        background:rgba(255,255,255,.18); cursor:default; }
   .bgm .ic{ font-size:1rem; line-height:1; }
   .bgm.on .ic{ animation:pulse 1.9s ease-in-out infinite; }
   @keyframes pulse{ 0%,100%{opacity:1} 50%{opacity:.35} }
 
-  .scroll{ margin-top:52px; color:var(--muted); font-size:.76rem; letter-spacing:.2em; }
+  /* ─── 난쟁이들이 집을 짓습니다 ─── */
+  .yard{ margin:34px auto 0; max-width:560px; }
+  .yard svg{ display:block; width:100%; height:auto; overflow:visible; }
+  .y-sky{ fill:none; }
+  .y-ground{ fill:#6b5068; }
+  .y-grass{ fill:none; stroke:#8e6f95; stroke-width:2; stroke-linecap:round; }
+  .y-wall{ fill:#f0d3a8; stroke:#8a6a4c; stroke-width:2; stroke-linejoin:round; }
+  .y-wall2{ fill:#e5bf8e; stroke:#8a6a4c; stroke-width:2; }
+  .y-roof{ fill:#c4635a; stroke:#8a4a44; stroke-width:2; stroke-linejoin:round; }
+  .y-win{ fill:#ffe1a1; stroke:#8a6a4c; stroke-width:1.6; }
+  .y-door{ fill:#8a5c3a; stroke:#6b4429; stroke-width:1.6; }
+  .y-wood{ fill:#b98a55; stroke:#8a6a4c; stroke-width:1.6; }
+  .y-ladder{ fill:none; stroke:#a9784a; stroke-width:2.6; stroke-linecap:round; }
+  .y-skin{ fill:#f6d3b4; }
+  .y-beard{ fill:#f3efe6; }
+  .y-hat-a{ fill:#d2544f; } .y-hat-b{ fill:#4f8f86; } .y-hat-c{ fill:#d99a3c; }
+  .y-coat-a{ fill:#5b7fb4; } .y-coat-b{ fill:#7a9b57; } .y-coat-c{ fill:#a96a8e; }
+  .y-boot{ fill:#6b4429; }
+  .y-tool{ fill:#8a8f99; stroke:#5f6570; stroke-width:1.2; }
+  .y-handle{ fill:#a9784a; }
+  .y-paint{ fill:#7fbfae; }
+  .y-line{ fill:none; stroke:#8a6a4c; stroke-width:1.6; stroke-linecap:round; }
+
+  /* 움직임 */
+  .sw-hammer{ transform-origin:0 0; animation:hammer 1.1s ease-in-out infinite; }
+  @keyframes hammer{ 0%,58%,100%{transform:rotate(-8deg)} 30%{transform:rotate(-54deg)} }
+  .sw-brush{ transform-origin:0 0; animation:brush 1.6s ease-in-out infinite; }
+  @keyframes brush{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-11px)} }
+  .sw-paint{ animation:paintup 7s ease-in-out infinite; }
+  @keyframes paintup{ 0%,8%{transform:scaleY(0)} 62%,100%{transform:scaleY(1)} }
+  .sw-carry{ animation:carry 6.5s ease-in-out infinite; }
+  @keyframes carry{ 0%{transform:translateX(0)} 46%{transform:translateX(64px)}
+                    54%{transform:translateX(64px)} 100%{transform:translateX(0)} }
+  .sw-bob{ animation:bob 0.62s ease-in-out infinite alternate; }
+  @keyframes bob{ from{transform:translateY(0)} to{transform:translateY(-2px)} }
+  .sw-saw{ transform-origin:center; animation:saw 0.9s ease-in-out infinite; }
+  @keyframes saw{ 0%,100%{transform:translateX(-4px)} 50%{transform:translateX(4px)} }
+  .sw-smoke circle{ fill:#efe2cf; opacity:0; animation:ypuff 4.4s linear infinite; }
+  .sw-smoke circle:nth-child(2){ animation-delay:1.5s; }
+  .sw-smoke circle:nth-child(3){ animation-delay:3s; }
+  @keyframes ypuff{ 0%{opacity:0;transform:translate(0,0) scale(.5)} 20%{opacity:.5}
+                    100%{opacity:0;transform:translate(-7px,-26px) scale(2)} }
+  @media (prefers-reduced-motion:reduce){
+    .sw-hammer,.sw-brush,.sw-paint,.sw-carry,.sw-bob,.sw-saw,.sw-smoke circle{ animation:none; }
+    .sw-paint{ transform:scaleY(1); } }
+
+  .scroll{ margin-top:46px; color:rgba(74,40,62,.66); font-size:.76rem; letter-spacing:.2em; }
   .scroll span{ display:block; margin-top:10px; font-size:1.1rem; animation:down 2.4s ease-in-out infinite; }
   @keyframes down{ 0%,100%{transform:translateY(0);opacity:.5} 50%{transform:translateY(7px);opacity:1} }
 
   /* ─── 작가 소개 ─── */
   .author{ border-top:1px solid var(--line); border-bottom:1px solid var(--line);
-           background:linear-gradient(180deg,rgba(255,255,255,.015),transparent); }
+           background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.03)); }
   .author .wrap{ display:flex; gap:42px; align-items:center; padding-top:56px; padding-bottom:56px; }
   .portrait{ flex:0 0 auto; width:168px; height:214px; border-radius:4px; overflow:hidden;
-      background:var(--wall-2); border:1px solid var(--edge); position:relative;
+      background:rgba(255,255,255,.1); border:1px solid var(--edge); position:relative;
       box-shadow:0 22px 52px rgba(0,0,0,.5); }
   .portrait img{ width:100%; height:100%; object-fit:cover; filter:grayscale(1) contrast(1.06); display:block; }
   .portrait .none{ position:absolute; inset:0; display:flex; flex-direction:column; gap:8px;
@@ -87,13 +139,13 @@
   .sky{ position:absolute; left:0; right:0; top:-30px; height:470px; pointer-events:none;
         overflow:hidden; z-index:0; }
   .sky i{ position:absolute; border-radius:50%; background:#fff6e2;
-          box-shadow:0 0 6px rgba(255,244,222,.8); animation:twinkle 4s ease-in-out infinite; }
-  @keyframes twinkle{ 0%,100%{opacity:.18} 50%{opacity:.95} }
-  .moon{ position:absolute; right:6%; top:26px; width:66px; height:66px; border-radius:50%;
+          box-shadow:0 0 6px rgba(255,244,222,.7); animation:twinkle 5s ease-in-out infinite; }
+  @keyframes twinkle{ 0%,100%{opacity:.1} 50%{opacity:.6} }
+  .moon{ position:absolute; right:6%; top:26px; width:56px; height:56px; opacity:.55; border-radius:50%;
          background:radial-gradient(circle at 36% 34%, #fff6e0, #f0dcaa 58%, #d8be8c 100%);
          box-shadow:0 0 50px rgba(246,228,186,.34), 0 0 130px rgba(233,189,118,.2); opacity:.9; }
   .moon:after{ content:''; position:absolute; right:-10px; top:-8px; width:60px; height:60px;
-         border-radius:50%; background:var(--night); }
+         border-radius:50%; background:#3e3560; }
   .town .wrap{ position:relative; z-index:1; }
 
   .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(134px,1fr));
@@ -102,31 +154,31 @@
           display:block; width:100%; position:relative; }
   .house svg{ display:block; width:100%; height:auto; overflow:visible; transition:.3s; }
 
-  .hill{ fill:#182338; }
-  .road{ fill:#1e2a3f; }
-  .curb{ fill:none; stroke:#2c3a54; stroke-width:1.6; }
-  .cobble{ fill:none; stroke:#26334b; stroke-width:1.4; stroke-linecap:round; }
-  .lamp-p{ fill:none; stroke:#3a475f; stroke-width:2.6; stroke-linecap:round; }
+  .hill{ fill:#4a3a5c; }
+  .road{ fill:#56425f; }
+  .curb{ fill:none; stroke:#6d5678; stroke-width:1.6; }
+  .cobble{ fill:none; stroke:#654f72; stroke-width:1.4; stroke-linecap:round; }
+  .lamp-p{ fill:none; stroke:#6a5578; stroke-width:2.6; stroke-linecap:round; }
   .lamp-h{ fill:#f2d79a; }
   .lamp-g{ fill:var(--glow); opacity:.14; }
-  .trunk{ fill:#3b3026; }
-  .leaf{ fill:#2c4438; stroke:#375548; stroke-width:1.3; }
+  .trunk{ fill:#4a3629; }
+  .leaf{ fill:#3c5a48; stroke:#4d7059; stroke-width:1.3; }
 
   .fc{ fill:var(--fc,#4b5672); stroke:rgba(0,0,0,.4); stroke-width:1.5;
-       filter:brightness(.62) saturate(.7); transition:.3s; }
+       filter:brightness(.82) saturate(.86); transition:.3s; }
   .rfe{ fill:var(--rc,#3e4954); stroke:rgba(0,0,0,.42); stroke-width:1.7;
-        stroke-linejoin:round; filter:brightness(.66) saturate(.72); transition:.3s; }
+        stroke-linejoin:round; filter:brightness(.84) saturate(.88); transition:.3s; }
   .ch{ fill:var(--rc,#3e4954); stroke:rgba(0,0,0,.42); stroke-width:1.3;
-       filter:brightness(.6) saturate(.72); transition:.3s; }
+       filter:brightness(.8) saturate(.86); transition:.3s; }
   .acc{ fill:var(--rc,#3e4954); stroke:rgba(0,0,0,.34); stroke-width:1.4;
-        filter:brightness(.72) saturate(.66); transition:.3s; }
+        filter:brightness(.9) saturate(.82); transition:.3s; }
   .awn{ fill:var(--rc,#3e4954); stroke:rgba(0,0,0,.34); stroke-width:1.3;
         filter:brightness(.78) saturate(.8); transition:.3s; }
   .flag{ fill:var(--rc,#3e4954); filter:brightness(.9) saturate(.9); }
-  .col{ fill:#d6cbb4; stroke:rgba(0,0,0,.34); stroke-width:1; filter:brightness(.5) saturate(.6); transition:.3s; }
-  .stp{ fill:#cfc4ad; stroke:rgba(0,0,0,.34); stroke-width:1; filter:brightness(.5) saturate(.6); transition:.3s; }
+  .col{ fill:#d6cbb4; stroke:rgba(0,0,0,.34); stroke-width:1; filter:brightness(.88) saturate(.85); transition:.3s; }
+  .stp{ fill:#cfc4ad; stroke:rgba(0,0,0,.34); stroke-width:1; filter:brightness(.88) saturate(.85); transition:.3s; }
   .cross{ fill:none; stroke:#ded2b8; stroke-width:2.6; stroke-linecap:round;
-          filter:brightness(.6) saturate(.6); transition:.3s; }
+          filter:brightness(.95) saturate(.8); transition:.3s; }
   .hand{ fill:none; stroke:#2a2318; stroke-width:1.6; stroke-linecap:round; }
   .pot{ fill:#4a3526; }
   .ln{ fill:none; stroke:rgba(0,0,0,.34); stroke-width:1.4; stroke-linecap:round; }
@@ -178,21 +230,21 @@
   .house:hover .ty,.house:focus-visible .ty{ fill:rgba(255,240,198,.82); }
   .house:focus{ outline:none; }
   .house:focus-visible{ outline:2px solid var(--sig); outline-offset:3px; border-radius:6px; }
-  .house .nm{ display:block; margin:9px 5px 1px; font-size:.79rem; color:#c6d0df;
+  .house .nm{ display:block; margin:9px 5px 1px; font-size:.79rem; color:#fdf6ee;
       line-height:1.4; font-weight:600; transition:.25s; }
-  .house .wh{ display:block; margin:0 5px 18px; font-size:.68rem; color:#66728a;
+  .house .wh{ display:block; margin:0 5px 18px; font-size:.68rem; color:rgba(253,246,238,.6);
       letter-spacing:.06em; transition:.25s; }
   .house:hover .nm,.house:focus-visible .nm{ color:#ffe6ab; }
   .house:hover .wh,.house:focus-visible .wh{ color:rgba(255,230,171,.62); }
-  .house.lit .nm{ color:#e7edf6; }
+  .house.lit .nm{ color:#fff8ec; }
   @media (prefers-reduced-motion:reduce){
     .sky i,.smoke circle{ animation:none; } .smoke circle{ opacity:.2; } }
 
   /* ─── 집 안 ─── */
-  .veil{ position:fixed; inset:0; background:rgba(5,8,14,.86); backdrop-filter:blur(7px);
+  .veil{ position:fixed; inset:0; background:rgba(28,22,44,.88); backdrop-filter:blur(7px);
       display:none; z-index:60; padding:24px; overflow-y:auto; }
   .veil.open{ display:block; }
-  .room{ max-width:760px; margin:40px auto; background:var(--wall); border:1px solid var(--edge);
+  .room{ max-width:760px; margin:40px auto; background:#2f2748; border:1px solid var(--edge);
       border-radius:12px; overflow:hidden; box-shadow:0 34px 90px rgba(0,0,0,.66);
       animation:rise .32s cubic-bezier(.2,.7,.3,1); }
   @keyframes rise{ from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
@@ -207,7 +259,7 @@
       border:1px solid var(--edge); background:transparent; color:var(--body); font-size:1.1rem;
       cursor:pointer; line-height:1; transition:.2s; }
   .shut:hover{ border-color:var(--glow); color:var(--glow); }
-  .room .pic{ display:block; width:100%; border-bottom:1px solid var(--line); background:var(--night); }
+  .room .pic{ display:block; width:100%; border-bottom:1px solid var(--line); background:#241e38; }
   .room .tale{ padding:30px 34px 6px; }
   .room .tale p{ margin:0 0 13px; font-size:.97rem; color:var(--body); line-height:1.85; }
   .room .tale p:first-child{ color:var(--ink); font-size:1.04rem; }
@@ -224,7 +276,7 @@
   .rules .lead{ color:var(--muted); font-size:.88rem; margin:0 0 30px; }
   .rules ul{ list-style:none; margin:0; padding:0; display:grid; gap:1px; background:var(--line);
       border:1px solid var(--line); border-radius:10px; overflow:hidden; }
-  .rules li{ background:var(--wall); padding:19px 22px; font-size:.91rem; color:var(--body); }
+  .rules li{ background:rgba(255,255,255,.08); padding:19px 22px; font-size:.91rem; color:var(--body); }
   .rules b{ display:block; color:var(--ink); font-family:var(--serif); font-size:1.02rem; margin-bottom:3px; }
 
   footer{ padding:54px 0 70px; font-size:.79rem; color:var(--muted); }
@@ -264,9 +316,90 @@
 <header class="gate">
   <div class="wrap">
     <div class="mark">JIEUM WORKS</div>
-    <h1>당신의 인터넷에<br><em>거할 곳</em>이 있습니까?</h1>
+    <h1>당신은 인터넷에<br><em>거할 곳</em>이 있습니까?</h1>
     <p class="say">음악을 들으시면서 아래 집들을 천천히 둘러보세요.<br>
       그리고 <b>인터넷 위에 당신의 집</b>도 한 채 지어 보세요.</p>
+    <div class="yard" aria-hidden="true">
+      <svg viewBox="0 0 560 234">
+        <!-- 땅 -->
+        <path class="y-ground" d="M0 214 Q140 206 280 212 Q420 218 560 210 L560 234 L0 234 Z"/>
+        <path class="y-grass" d="M18 212 v-8 M34 214 v-6 M62 213 v-9 M92 214 v-6 M124 212 v-8 M402 213 v-7 M438 214 v-6 M470 212 v-9 M504 214 v-6 M532 212 v-8"/>
+
+        <!-- 짓고 있는 집 -->
+        <g transform="translate(196,0)">
+          <rect class="y-wall" x="0" y="112" width="152" height="102" rx="4"/>
+          <rect class="y-wall2 sw-paint" x="0" y="112" width="152" height="102" rx="4"
+                style="transform-origin:0 214px"/>
+          <path class="y-roof" d="M-14 112 L76 52 L166 112 Z"/>
+          <rect class="y-roof" x="112" y="62" width="17" height="34" rx="2"/>
+          <g transform="translate(120,60)"><g class="sw-smoke">
+            <circle r="4"/><circle r="4.6"/><circle r="4"/>
+          </g></g>
+          <rect class="y-win" x="22" y="134" width="32" height="28" rx="3"/>
+          <path class="y-line" d="M38 134 v28 M22 148 h32"/>
+          <rect class="y-win" x="98" y="134" width="32" height="28" rx="3"/>
+          <path class="y-line" d="M114 134 v28 M98 148 h32"/>
+          <path class="y-door" d="M62 214 v-28 a14 14 0 0 1 28 0 v28 Z"/>
+        </g>
+
+        <!-- 사다리와 페인트칠하는 난쟁이 -->
+        <path class="y-ladder" d="M160 214 L186 110 M182 214 L208 110
+              M165 190 h21 M170 166 h21 M175 142 h21 M180 118 h21"/>
+        <g transform="translate(172,122)">
+          <g class="sw-bob">
+            <ellipse class="y-boot" cx="4" cy="46" rx="7" ry="4"/>
+            <ellipse class="y-boot" cx="18" cy="46" rx="7" ry="4"/>
+            <path class="y-coat-b" d="M0 20 h22 l4 24 h-30 Z"/>
+            <circle class="y-skin" cx="11" cy="14" r="9"/>
+            <path class="y-beard" d="M3 16 q8 16 16 0 q-8 7 -16 0 Z"/>
+            <path class="y-hat-b" d="M-2 12 q13 -22 26 0 Z"/>
+            <circle class="y-hat-b" cx="11" cy="1" r="3"/>
+            <g transform="translate(24,24)"><g class="sw-brush">
+              <rect class="y-handle" x="0" y="-2" width="4" height="18" rx="2"/>
+              <rect class="y-paint" x="-2" y="-12" width="8" height="12" rx="2"/>
+            </g></g>
+          </g>
+        </g>
+
+        <!-- 망치질하는 난쟁이 -->
+        <g transform="translate(372,166)">
+          <ellipse class="y-boot" cx="4" cy="46" rx="7" ry="4"/>
+          <ellipse class="y-boot" cx="18" cy="46" rx="7" ry="4"/>
+          <path class="y-coat-a" d="M0 20 h22 l4 24 h-30 Z"/>
+          <circle class="y-skin" cx="11" cy="14" r="9"/>
+          <path class="y-beard" d="M3 16 q8 16 16 0 q-8 7 -16 0 Z"/>
+          <path class="y-hat-a" d="M-2 12 q13 -22 26 0 Z"/>
+          <circle class="y-hat-a" cx="11" cy="1" r="3"/>
+          <g transform="translate(24,22)"><g class="sw-hammer">
+            <rect class="y-handle" x="0" y="-2" width="20" height="4" rx="2"/>
+            <rect class="y-tool" x="18" y="-7" width="11" height="14" rx="2"/>
+          </g></g>
+          <rect class="y-wood" x="-16" y="40" width="58" height="8" rx="2"/>
+        </g>
+
+        <!-- 널빤지 나르는 난쟁이 -->
+        <g transform="translate(48,166)"><g class="sw-carry">
+          <g class="sw-bob">
+            <ellipse class="y-boot" cx="4" cy="46" rx="7" ry="4"/>
+            <ellipse class="y-boot" cx="18" cy="46" rx="7" ry="4"/>
+            <path class="y-coat-c" d="M0 20 h22 l4 24 h-30 Z"/>
+            <circle class="y-skin" cx="11" cy="14" r="9"/>
+            <path class="y-beard" d="M3 16 q8 16 16 0 q-8 7 -16 0 Z"/>
+            <path class="y-hat-c" d="M-2 12 q13 -22 26 0 Z"/>
+            <circle class="y-hat-c" cx="11" cy="1" r="3"/>
+            <rect class="y-wood" x="-13" y="19" width="50" height="7" rx="2"/>
+          </g>
+        </g></g>
+
+        <!-- 자재 더미 -->
+        <g transform="translate(486,186)">
+          <rect class="y-wood" x="0" y="18" width="56" height="9" rx="2"/>
+          <rect class="y-wood" x="4" y="9" width="48" height="9" rx="2"/>
+          <rect class="y-wood sw-saw" x="10" y="0" width="38" height="9" rx="2"/>
+        </g>
+      </svg>
+    </div>
+
     <button class="bgm" id="bgm" type="button"><span class="ic">♪</span><span id="bgmT">음악 켜기</span></button>
     <div class="scroll">아래로<span>↓</span></div>
   </div>
