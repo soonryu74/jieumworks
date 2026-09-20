@@ -122,7 +122,8 @@
       line-height:1.6; padding:0 12px; }
   .portrait .none b{ font-size:1.6rem; font-weight:400; opacity:.45; }
   .abio{ min-width:0; }
-  .abio .who{ font-family:var(--serif); font-size:1.5rem; font-weight:700; margin:0 0 4px; }
+  .abio .who{ font-family:var(--serif); font-size:1.9rem; font-weight:700; margin:0 0 6px;
+      letter-spacing:.34em; }
   .abio .role{ color:var(--glow); font-size:.78rem; letter-spacing:.16em; font-weight:700; margin-bottom:14px; }
   .abio p{ margin:0 0 8px; color:var(--body); font-size:.94rem; }
   .facts{ display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; }
@@ -141,11 +142,9 @@
   .sky i{ position:absolute; border-radius:50%; background:#fff6e2;
           box-shadow:0 0 6px rgba(255,244,222,.7); animation:twinkle 5s ease-in-out infinite; }
   @keyframes twinkle{ 0%,100%{opacity:.1} 50%{opacity:.6} }
-  .moon{ position:absolute; right:6%; top:26px; width:56px; height:56px; opacity:.55; border-radius:50%;
-         background:radial-gradient(circle at 36% 34%, #fff6e0, #f0dcaa 58%, #d8be8c 100%);
-         box-shadow:0 0 50px rgba(246,228,186,.34), 0 0 130px rgba(233,189,118,.2); opacity:.9; }
-  .moon:after{ content:''; position:absolute; right:-10px; top:-8px; width:60px; height:60px;
-         border-radius:50%; background:#3e3560; }
+  .moon{ position:absolute; right:6%; top:22px; width:58px; height:58px; opacity:.92;
+         filter:drop-shadow(0 0 22px rgba(246,228,186,.42)); }
+  .moon svg{ display:block; width:100%; height:100%; }
   .town .wrap{ position:relative; z-index:1; }
 
   .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(134px,1fr));
@@ -319,14 +318,13 @@
     .gate .say{ font-size:.92rem; }
     .author .wrap{ flex-direction:column; gap:26px; align-items:flex-start; padding-top:44px; padding-bottom:44px; }
     .portrait{ width:132px; height:168px; }
-    .abio .who{ font-size:1.3rem; }
+    .abio .who{ font-size:1.55rem; letter-spacing:.3em; }
     .town{ padding:52px 0 20px; }
     .town h2{ font-size:1.36rem; }
     .grid{ grid-template-columns:repeat(auto-fill,minmax(104px,1fr)); gap:0; }
     .house .nm{ font-size:.71rem; margin:7px 3px 1px; }
     .house .wh{ font-size:.63rem; margin:0 3px 15px; }
-    .sky{ height:330px; } .moon{ width:46px; height:46px; right:7%; top:18px; }
-    .moon:after{ width:43px; height:43px; right:-7px; top:-5px; }
+    .sky{ height:330px; } .moon{ width:46px; height:46px; right:7%; top:14px; }
     .house .nm{ font-size:.72rem; }
     .veil{ padding:0; }
     .room{ margin:0; border-radius:0; border:0; min-height:100vh; }
@@ -453,7 +451,10 @@
 </section>
 
 <section class="town">
-  <div class="sky" id="sky" aria-hidden="true"><div class="moon"></div></div>
+  <div class="sky" id="sky" aria-hidden="true"><div class="moon">
+    <svg viewBox="0 0 60 60"><path d="M30 2 A28 28 0 1 0 30 58 A23 23 0 1 1 30 2 Z"
+      fill="#fdf0d2"/></svg>
+  </div></div>
   <div class="wrap">
     <h2>지어 놓은 집들</h2>
     <p class="lead">서른 채 모두 불이 켜져 있습니다. 눌러서 안으로 들어가 보세요.</p>

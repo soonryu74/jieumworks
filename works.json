@@ -1,7 +1,7 @@
 {
  "note": "만든 것 목록. 새로 만들 때마다 items에 한 줄 더하면 동네에 집이 한 채 늘어납니다. ym은 만든 달, 최신이 위로 옵니다. story를 적으면 집 안에 이야기가 생기고, shot에 assets/shots/파일명을 적으면 화면 사진이 붙습니다.",
  "author": {
-  "name": "",
+  "name": "지음",
   "title": "만드는 사람",
   "photo": "assets/fairy.svg",
   "bio": [
