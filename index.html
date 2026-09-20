@@ -246,9 +246,16 @@
     .house:hover .w-star,.house:focus-visible .w-star{ animation:spark .46s ease-in-out .2s 2; }
   }
   @media (hover:none){
+    /* 손가락은 「올려두기」가 없어, 그 집이 눈에 들어올 때 한 번 톡 칩니다 */
     .gnome{ opacity:1; transform:none; }
-    .bno{ opacity:.85; transform:none; transition:none; }
+    .bno{ opacity:.22; transform:none; transition:opacity .4s; }
+    .house.seen .bno{ opacity:1; }
+    .house.seen .wand{ animation:tap .5s ease-in-out .12s 2; }
+    .house.seen .w-star{ animation:spark .5s ease-in-out .12s 2; }
   }
+  /* 눌린 순간에도 한 번 */
+  .house:active .wand{ animation:tap .4s ease-in-out 1; }
+  .house:active .w-star{ animation:spark .4s ease-in-out 1; }
   .wand{ transform-origin:0 0; }
   @keyframes tap{ 0%,100%{transform:rotate(0)} 46%{transform:rotate(-38deg)} }
   @keyframes spark{ 0%,100%{opacity:1} 40%{opacity:.35} 62%{opacity:1} }
@@ -519,6 +526,7 @@
     document.getElementById('grid').addEventListener('click',function(e){
       var b=e.target.closest('.house'); if(b) open(+b.dataset.i); });
     sky();
+    watchHouses();
     setupBgm(d.bgm||{});
   }
 
@@ -689,6 +697,21 @@
       '</svg>'+
       '<span class="nm">'+esc(x.title)+'</span>'+
       '<span class="wh">'+esc(y)+' · '+m+'월</span></button>';
+  }
+
+  // 손가락으로 쓰는 기기에서, 그 집이 눈에 들어오면 한 번만 톡 칩니다.
+  function watchHouses(){
+    if(!window.matchMedia || !window.matchMedia('(hover:none)').matches) return;
+    var hs=document.querySelectorAll('.house');
+    if(!('IntersectionObserver' in window)){
+      Array.prototype.forEach.call(hs,function(h){ h.classList.add('seen'); }); return;
+    }
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('seen'); io.unobserve(e.target); }
+      });
+    },{ threshold:.5 });
+    Array.prototype.forEach.call(hs,function(h){ io.observe(h); });
   }
 
   function sky(){
