@@ -305,6 +305,53 @@
       border-radius:999px; padding:13px 26px; transition:.2s; }
   .room .go a:hover{ filter:brightness(1.08); }
 
+  /* ─── 하나씩 둘러보기: 사진 카드 ─── */
+  .shelf{ padding:70px 0 30px; border-top:1px solid var(--line); }
+  .shelf h2{ font-family:var(--serif); font-size:1.7rem; font-weight:700; margin:0 0 8px; }
+  .shelf > .wrap > .lead{ color:var(--body); font-size:.92rem; margin:0 0 34px; }
+  .group{ margin:0 0 46px; }
+  .group h3{ font-family:var(--serif); font-size:1.22rem; font-weight:700; margin:0 0 4px;
+             display:flex; align-items:baseline; gap:10px; }
+  .group h3 .cnt{ font-family:var(--sans); font-size:.76rem; font-weight:700; color:var(--glow);
+                  letter-spacing:.06em; }
+  .group .gl{ color:var(--body); font-size:.86rem; margin:0 0 18px; opacity:.86; }
+  .shelf h2,.shelf > .wrap > .lead,.group h3,.group .gl{
+    text-shadow:0 1px 2px rgba(40,22,48,.55), 0 0 14px rgba(40,22,48,.35); }
+  .cards{ display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:18px; }
+  .card{ background:rgba(34,27,52,.78); border:1px solid rgba(255,255,255,.1);
+         border-radius:14px; overflow:hidden; display:flex; flex-direction:column;
+         box-shadow:0 10px 30px rgba(20,12,30,.28); transition:transform .25s, box-shadow .25s; }
+  .card:hover{ transform:translateY(-3px); box-shadow:0 16px 38px rgba(20,12,30,.42); }
+  .c-top{ all:unset; cursor:pointer; display:block; }
+  .c-top:focus-visible{ outline:2px solid var(--sig); outline-offset:-2px; }
+  .c-pic{ display:block; aspect-ratio:16/10; overflow:hidden; background:#241e38;
+          border-bottom:1px solid rgba(255,255,255,.08); }
+  .c-pic img{ display:block; width:100%; height:100%; object-fit:cover; object-position:top;
+              transition:transform .4s; }
+  .card:hover .c-pic img{ transform:scale(1.03); }
+  .c-body{ display:block; padding:16px 18px 4px; }
+  .c-meta{ display:block; font-size:.7rem; color:var(--glow); letter-spacing:.12em;
+           font-weight:700; margin-bottom:6px; }
+  .c-title{ display:block; font-family:var(--serif); font-size:1.08rem; font-weight:700;
+            color:var(--ink); line-height:1.42; }
+  .c-desc{ display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
+           font-size:.84rem; color:var(--body); line-height:1.65; margin-top:6px; }
+  .c-act{ display:flex; align-items:center; gap:12px; padding:12px 18px 18px; margin-top:auto; }
+  .c-go{ display:inline-flex; align-items:center; gap:6px; text-decoration:none;
+         background:var(--glow); color:#2a1806; font-weight:700; font-size:.84rem;
+         border-radius:999px; padding:9px 18px; transition:filter .2s; }
+  .c-go:hover{ filter:brightness(1.08); }
+  .c-story{ all:unset; cursor:pointer; font-size:.8rem; color:var(--body);
+            border-bottom:1px solid rgba(255,255,255,.28); padding-bottom:1px; }
+  .c-story:hover{ color:var(--ink); border-color:var(--ink); }
+  .c-story:focus-visible{ outline:2px solid var(--sig); outline-offset:3px; }
+  @media (max-width:720px){
+    .shelf{ padding:52px 0 20px; }
+    .shelf h2{ font-size:1.36rem; }
+    .cards{ grid-template-columns:1fr; gap:14px; }
+    .group h3{ font-size:1.1rem; }
+  }
+
   /* ─── 일하는 방식 ─── */
   .rules{ border-top:1px solid var(--line); padding:66px 0 20px; }
   .rules h2{ font-family:var(--serif); font-size:1.4rem; font-weight:700; margin:0 0 8px; }
@@ -469,6 +516,14 @@
   </div>
 </section>
 
+<section class="shelf">
+  <div class="wrap">
+    <h2>하나씩 둘러보기</h2>
+    <p class="lead">마을의 집들을 갈래별로 모았습니다. 사진을 보고 바로 들어가 보세요.</p>
+    <div id="shelf"></div>
+  </div>
+</section>
+
 <section class="rules">
   <div class="wrap">
     <h2>집을 지을 때 지키는 것</h2>
@@ -525,6 +580,7 @@
     document.getElementById('grid').innerHTML=items.map(house).join('');
     document.getElementById('grid').addEventListener('click',function(e){
       var b=e.target.closest('.house'); if(b) open(+b.dataset.i); });
+    shelf(items);
     sky();
     watchHouses();
     setupBgm(d.bgm||{});
@@ -712,6 +768,59 @@
       });
     },{ threshold:.5 });
     Array.prototype.forEach.call(hs,function(h){ io.observe(h); });
+  }
+
+  // 갈래별 카드 목록
+  var GROUPS=[
+    {name:'공공 자료 · 보건', intro:'흩어진 공공 자료를 찾아 쓸 수 있게 묶었습니다.', tags:['공공','보건']},
+    {name:'돌봄 · 교육', intro:'제도를 몰라 헤매는 사람이 덜 헤매도록 정리했습니다.', tags:['돌봄','교육']},
+    {name:'부동산', intro:'집을 구하고, 계약하고, 이사하는 길을 순서대로 놓았습니다.', tags:['부동산']},
+    {name:'생활 · 도구', intro:'혼자 쓰려고 만들었다가 함께 쓰게 된 것들입니다.', tags:['생활','도구']}
+  ];
+  var CTA={ gov:'자료 찾기', press:'소식 보기', school:'배우러 가기', church:'나눔터 열기',
+            clinic:'살펴보기', care:'돌봄 찾기', shop:'둘러보기', works:'열어 보기',
+            block:'시세 보기', home:'안내 읽기', office:'확인하기' };
+
+  function card(x,i){
+    var y=x.ym.slice(0,4), m=+x.ym.slice(5,7);
+    var label=x.cta||CTA[x.kind]||'열어 보기';
+    return '<article class="card">'+
+      '<button class="c-top" type="button" data-i="'+i+'" aria-label="'+esc(x.title)+' 이야기 보기">'+
+        (x.shot?'<span class="c-pic"><img src="'+esc(x.shot)+'" alt="" loading="lazy"></span>':'')+
+        '<span class="c-body">'+
+          '<span class="c-meta">'+esc(x.no)+' · '+esc(y)+'년 '+m+'월</span>'+
+          '<span class="c-title">'+esc(x.title)+'</span>'+
+          '<span class="c-desc">'+esc(x.desc||'')+'</span>'+
+        '</span>'+
+      '</button>'+
+      '<div class="c-act">'+
+        '<a class="c-go" href="'+esc(x.url||'#')+'" target="_blank" rel="noopener">'+esc(label)+' ↗</a>'+
+        '<button class="c-story" type="button" data-i="'+i+'">이야기</button>'+
+      '</div>'+
+    '</article>';
+  }
+
+  function shelf(items){
+    var el=document.getElementById('shelf'); if(!el) return;
+    var used={}, html='';
+    GROUPS.forEach(function(g){
+      var list=[];
+      items.forEach(function(x,i){ if(g.tags.indexOf(x.tag)>-1){ list.push([x,i]); used[i]=1; } });
+      if(!list.length) return;
+      // 대표작은 갈래 맨 앞에, 나머지는 최근 것부터
+      list.sort(function(a,b){ return (b[0].star?1:0)-(a[0].star?1:0) || a[1]-b[1]; });
+      html+='<div class="group"><h3>'+esc(g.name)+'<span class="cnt">'+list.length+'채</span></h3>'+
+            '<p class="gl">'+esc(g.intro)+'</p><div class="cards">'+
+            list.map(function(p){ return card(p[0],p[1]); }).join('')+'</div></div>';
+    });
+    var rest=[]; items.forEach(function(x,i){ if(!used[i]) rest.push([x,i]); });
+    if(rest.length){
+      html+='<div class="group"><h3>그 밖의 것<span class="cnt">'+rest.length+'채</span></h3>'+
+            '<div class="cards">'+rest.map(function(p){ return card(p[0],p[1]); }).join('')+'</div></div>';
+    }
+    el.innerHTML=html;
+    el.addEventListener('click',function(e){
+      var b=e.target.closest('[data-i]'); if(b){ open(+b.dataset.i); } });
   }
 
   function sky(){
